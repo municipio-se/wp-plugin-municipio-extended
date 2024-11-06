@@ -38,7 +38,7 @@ add_filter("Modularity/Module/Posts/TemplateController/Mixed", function () {
   return "MunicipioExtended\\Modularity\\ModPosts\\TemplateController\\MixedTemplate";
 });
 
-add_filter("Modularity/Display/mod-posts/viewData", function ($data) {
-  $data["lang"]["readMore"] = "";
-  return $data;
-});
+// add_filter("Modularity/Display/mod-posts/viewData", function ($data) {
+//   $data["lang"]["readMore"] = "";
+//   return $data;
+// });
