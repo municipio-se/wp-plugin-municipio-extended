@@ -1,9 +1,9 @@
 <?php
 
-add_filter("Modularity/Module/ManualInput/DefaultValues", function ($values) {
-  $values["link_text"] = "";
-  return $values;
-});
+// add_filter("Modularity/Module/ManualInput/DefaultValues", function ($values) {
+//   $values["link_text"] = "";
+//   return $values;
+// });
 
 add_filter("Modularity/Display/mod-manualinput/viewData", function ($data) {
   if (!empty($data["manualInputs"]) && is_array($data["manualInputs"])) {
