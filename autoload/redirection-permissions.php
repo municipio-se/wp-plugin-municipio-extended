@@ -7,7 +7,7 @@ According to https://redirection.me/developer/permissions/ an official version
 will be released in the future.
 */
 
-if (function_exists("acf_add_local_field_group")) {
+add_action("acf/init", function () {
   acf_add_local_field_group([
     "key" => "group_mx_options_redirection",
     "title" => __("Redirection", "municipio-extended"),
@@ -53,7 +53,7 @@ if (function_exists("acf_add_local_field_group")) {
     "active" => 1,
     "description" => "",
   ]);
-}
+});
 
 add_filter("redirection_role", function () {
   if (current_user_can("administrator")) {
