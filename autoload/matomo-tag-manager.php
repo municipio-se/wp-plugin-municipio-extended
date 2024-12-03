@@ -2,6 +2,38 @@
 add_action('wp_head', 'inject_matomo_script');
 
 function inject_matomo_script() {
+    ?>
+    <!-- Matomo Cookie Consent -->
+    <script>
+    var waitForTrackerCount = 0;
+    function matomoWaitForTracker() {
+      if (typeof _paq === 'undefined') {
+        if (waitForTrackerCount < 40) {
+          setTimeout(matomoWaitForTracker, 250);
+          waitForTrackerCount++;
+          return;
+        }
+      } else {
+        document.addEventListener("cookieyes_consent_update", function (eventData) {
+            const data = eventData.detail;
+            consentSet(data);
+        });   
+      }
+    }
+    function consentSet(data) {
+       if (data.accepted.includes("analytics")) {
+           _paq.push(['rememberCookieConsentGiven']);
+           _paq.push(['setConsentGiven']);
+       } else {
+           _paq.push(['forgetCookieConsentGiven']);  
+           _paq.push(['deleteCookies']);         
+       }
+    }
+    document.addEventListener('DOMContentLoaded', matomoWaitForTracker());
+    </script>
+    <!-- End Matomo Cookie Consent -->
+    <?php
+
     if (defined('MATOMO_CONTAINER_ID') && !defined('MATOMO_URL')) {
         // This is for Matomo Tag Manager on premium.analys.cloud
         // It's the one we will use for all the new LTS sites.
@@ -26,6 +58,7 @@ function inject_matomo_script() {
         <!-- Matomo -->
         <script>
           var _paq = window._paq = window._paq || [];
+          _paq.push(['requireCookieConsent']);
           _paq.push(['trackPageView']);
           _paq.push(['enableLinkTracking']);
           (function() {
