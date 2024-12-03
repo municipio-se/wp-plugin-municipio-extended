@@ -60,7 +60,7 @@ add_filter("redirection_role", function () {
     return "manage_options";
   } elseif (
     current_user_can("editor") &&
-    get_field("editor_access_to_redirection", "municipio-extended") == 1
+    get_field("editor_access_to_redirection", "options") == 1
   ) {
     add_menu_page(
       "redirection_link",
