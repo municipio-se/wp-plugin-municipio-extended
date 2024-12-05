@@ -51,7 +51,7 @@ function inject_matomo_script() {
         </script>
         <!-- End Matomo Tag Manager -->
         <?php
-    }  elseif (defined('MATOMO_CONTAINER_ID') && defined('MATOMO_URL')) {
+    } elseif (defined('MATOMO_CONTAINER_ID') && defined('MATOMO_URL')) {
       // This is for Matomo Tag Manager on premium.analys.cloud
       // It's the one we will use for all the new LTS sites.
       ?>
