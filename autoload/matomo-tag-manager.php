@@ -34,26 +34,9 @@ function inject_matomo_script() {
     <!-- End Matomo Cookie Consent -->
     <?php
 
-    if (defined('MATOMO_CONTAINER_ID') && !defined('MATOMO_URL')) {
-        // This is for Matomo Tag Manager on premium.analys.cloud
-        // It's the one we will use for all the new LTS sites.
-        ?>
-        <!-- Matomo Tag Manager -->
-        <script>
-          var _mtm = window._mtm = window._mtm || [];
-          _mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
-          (function() {
-            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-            g.async=true;
-            g.src='https://premium.analys.cloud/js/container_' + '<?php echo MATOMO_CONTAINER_ID; ?>' + '.js';
-            s.parentNode.insertBefore(g,s);
-          })();
-        </script>
-        <!-- End Matomo Tag Manager -->
-        <?php
-    } elseif (defined('MATOMO_CONTAINER_ID') && defined('MATOMO_URL')) {
-      // This is for Matomo Tag Manager on premium.analys.cloud
-      // It's the one we will use for all the new LTS sites.
+    if (defined('MATOMO_CONTAINER_ID') && defined('MATOMO_URL')) {
+      // This is for Matomo Tag Manager. It's the one we will use for all the new LTS
+      // sites.
       ?>
       <!-- Matomo Tag Manager -->
       <script>
@@ -69,8 +52,11 @@ function inject_matomo_script() {
       <!-- End Matomo Tag Manager -->
       <?php
     } elseif (!defined('MATOMO_CONTAINER_ID') && defined('MATOMO_URL') && defined('MATOMO_SITE_ID')) {
-        // This is for regular Matomo tag. Use this during the transition period, and then
-        // remove it.
+        // This is for regular Matomo tag. Use this temporarily while migrating an old
+        // site to LTS. This way we don't need to migrate Matomo at the exact same moment
+        // as the LTS site goes live. Then when we have tested that the frontend is
+        // working, the next step will be to migrate the Matomo db from old instance to
+        // insights.analys.cloud to change from MATOMO_SITE_ID to MATOMO_CONTAINER_ID.
         ?>
         <!-- Matomo -->
         <script>
