@@ -82,7 +82,7 @@ jobs:
                 }
               }
             }
-        run: composer update
+        run: composer update municipio-lts/wp-plugin-municipio-extended-2024
 
       - name: Delete remote branch if it exists
         working-directory: repo_${{ matrix.repo }}/wordpress
