@@ -122,8 +122,10 @@ function mx_search_ajax_handler() {
 
   $fields = [
     "post_title^10",
+    "post_title.exact^10",
     "attachments.attachment.title^10",
     "post_content_filtered^1",
+    "post_content_filtered.exact^1",
     "attachments.attachment.content^1",
   ];
 
@@ -359,10 +361,13 @@ function mx_search_ajax_handler() {
    */
   $es_body = apply_filters("mx_search_es_body", $es_body, $data);
 
+  // mx_error_log("Searching with body", json_encode($es_body));
+
   try {
     $es_results = mx_search_perform_es_search($es_body);
 
     $total = $es_results["hits"]["total"]["value"] ?? null;
+    // mx_error_log("Total: " . $total);
 
     $hit_source_mapping = [
       "title" => fn($hit) => mx_coalesce_string([
@@ -521,11 +526,23 @@ add_filter(
  * Adds stemming
  */
 add_filter("ep_post_mapping", function ($mapping) {
-  $mapping["settings"]["analysis"]["analyzer"]["default"]["filter"][] =
-    "swedish_stemmer";
   $mapping["settings"]["analysis"]["filter"]["swedish_stemmer"] = [
     "type" => "stemmer",
     "name" => "swedish",
+  ];
+  $mapping["settings"]["analysis"]["analyzer"]["default"]["filter"][] =
+    "swedish_stemmer";
+
+  // TODO: Can we do this without having to explicitly define the fields? What about attachments?
+  $mapping["mappings"]["properties"]["post_title"]["fields"]["exact"] = [
+    "type" => "text",
+    "analyzer" => "default_search",
+  ];
+  $mapping["mappings"]["properties"]["post_content_filtered"]["fields"][
+    "exact"
+  ] = [
+    "type" => "text",
+    "analyzer" => "default_search",
   ];
   return $mapping;
 });
