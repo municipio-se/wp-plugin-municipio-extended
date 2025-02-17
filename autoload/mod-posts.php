@@ -185,3 +185,8 @@ add_action(
   },
   20,
 );
+
+// add_filter("Modularity/Display/mod-posts/viewData", function ($data) {
+//   $data["lang"]["readMore"] = "";
+//   return $data;
+// });
