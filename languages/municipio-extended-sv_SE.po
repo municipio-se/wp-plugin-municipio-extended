@@ -5,8 +5,8 @@ msgstr ""
 "Project-Id-Version: Municipio Extended 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-"
 "municipio-extended-2024\n"
-"POT-Creation-Date: 2025-02-10T17:15:25+00:00\n"
-"PO-Revision-Date: 2025-02-10 18:16+0100\n"
+"POT-Creation-Date: 2025-02-17T16:31:42+00:00\n"
+"PO-Revision-Date: 2025-02-17 17:32+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: sv\n"
@@ -136,11 +136,19 @@ msgstr ""
 
 #: autoload/custom-widgets.php:5
 msgid "Related pages sidebar"
-msgstr ""
+msgstr "Yta för relaterade sidor"
 
 #: autoload/custom-widgets.php:6
 msgid "Widget area made for related pages"
-msgstr ""
+msgstr "Widgetområde för relaterade sidor"
+
+#: autoload/editor-access.php:13
+msgid "Redirection"
+msgstr "Redirection"
+
+#: autoload/editor-access.php:17
+msgid "Allow Editors access to Redirection"
+msgstr "Tillåt redaktörer åtkomst till Redirection"
 
 #: autoload/general.php:11
 msgid "Display text content for One Page template"
@@ -335,7 +343,7 @@ msgstr "Kort och lista"
 
 #: autoload/mod-posts.php:81
 msgid "Välj taxonomier"
-msgstr ""
+msgstr "Välj taxonomier"
 
 #: autoload/mxui.php:14
 msgid "Cards"
@@ -415,7 +423,7 @@ msgstr "Efter innehåll"
 
 #: autoload/mxui.php:208
 msgid "Hero search placeholder"
-msgstr ""
+msgstr "Platshållare för sökfält i hero"
 
 #: autoload/page-apperance.php:10
 msgctxt "Page Apperance Field Label"
@@ -556,14 +564,6 @@ msgstr "Nyhetslista"
 msgid "Select a page or post to redirect to."
 msgstr "Välj en sida eller ett inlägg att omdirigera till."
 
-#: autoload/redirection-permissions.php:13
-msgid "Redirection"
-msgstr "Redirection"
-
-#: autoload/redirection-permissions.php:17
-msgid "Allow Editors access to Redirection"
-msgstr "Tillåt redaktörer åtkomst till Redirection"
-
 #: autoload/search.php:572
 msgid "Search"
 msgstr "Sök"
@@ -684,11 +684,15 @@ msgstr "Temaanpassningar kunde inte klonas."
 msgid "Select a site to clone theme customizations from."
 msgstr "Välj en webbplats att klona temaanpassningar från."
 
-#: autoload/theme-mods.php:68
+#: autoload/theme-mods.php:72
 msgid "Site"
 msgstr "Webbplats"
 
-#: autoload/theme-mods.php:82
+#: autoload/theme-mods.php:95
+msgid "Debug"
+msgstr "Felsök"
+
+#: autoload/theme-mods.php:106
 msgid "Clone"
 msgstr "Klona"
 

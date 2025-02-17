@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-02-10T17:15:25+00:00\n"
+"POT-Creation-Date: 2025-02-17T16:31:42+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.11.0\n"
 "X-Domain: municipio-extended\n"
@@ -136,6 +136,14 @@ msgstr ""
 
 #: autoload/custom-widgets.php:6
 msgid "Widget area made for related pages"
+msgstr ""
+
+#: autoload/editor-access.php:13
+msgid "Redirection"
+msgstr ""
+
+#: autoload/editor-access.php:17
+msgid "Allow Editors access to Redirection"
 msgstr ""
 
 #: autoload/general.php:11
@@ -543,14 +551,6 @@ msgstr ""
 msgid "Select a page or post to redirect to."
 msgstr ""
 
-#: autoload/redirection-permissions.php:13
-msgid "Redirection"
-msgstr ""
-
-#: autoload/redirection-permissions.php:17
-msgid "Allow Editors access to Redirection"
-msgstr ""
-
 #: autoload/search.php:572
 msgid "Search"
 msgstr ""
@@ -670,11 +670,15 @@ msgstr ""
 msgid "Select a site to clone theme customizations from."
 msgstr ""
 
-#: autoload/theme-mods.php:68
+#: autoload/theme-mods.php:72
 msgid "Site"
 msgstr ""
 
-#: autoload/theme-mods.php:82
+#: autoload/theme-mods.php:95
+msgid "Debug"
+msgstr ""
+
+#: autoload/theme-mods.php:106
 msgid "Clone"
 msgstr ""
 
