@@ -442,3 +442,10 @@ ul li::marker {
 #input_hero-search-form__field {
   width: 100%;
 }
+
+/**
+ * Fixes font rendering issues in Safari. See https://www.reddit.com/r/Safari/comments/17sa9w9/safari_you_are_killing_me_with_the_700_font/?rdt=63532 for more information.
+ */
+body {
+  font-synthesis: none;
+}

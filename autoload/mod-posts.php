@@ -198,3 +198,69 @@ add_filter("Municipio/Helper/Post/postObject", function ($postObject) {
   }
   return $postObject;
 });
+
+/**
+ * Adds "Display age notification on posts" field to default posts
+ */
+add_action("acf/init", function () {
+  acf_add_local_field([
+    "key" => "field_display_age_notification_on_default_posts",
+    "label" => __("Display age notification on posts", "municipio-extended"),
+    "name" => "display_age_notification_on_default_posts",
+    "aria-label" => "",
+    "type" => "true_false",
+    "instructions" => "",
+    "required" => 0,
+    "conditional_logic" => 0,
+    "wrapper" => [
+      "width" => "",
+      "class" => "",
+      "id" => "",
+    ],
+    "message" => __(
+      "Whether to display an information notice on posts after X amount of days",
+      "municipio-extended",
+    ),
+    "default_value" => 0,
+    "ui_on_text" => "",
+    "ui_off_text" => "",
+    "ui" => 0,
+    "parent" => "group_56c6ba934d682",
+  ]);
+
+  // Add the "Display the notice after this many days" field
+  acf_add_local_field([
+    "key" => "field_default_post_age_days",
+    "label" => __(
+      "Display the notice after this many days",
+      "municipio-extended",
+    ),
+    "name" => "post_age_days",
+    "aria-label" => "",
+    "type" => "number",
+    "instructions" => "",
+    "required" => 0,
+    "conditional_logic" => [
+      [
+        [
+          "field" => "field_display_age_notification_on_default_posts",
+          "operator" => "==",
+          "value" => "1",
+        ],
+      ],
+    ],
+    "wrapper" => [
+      "width" => "",
+      "class" => "",
+      "id" => "",
+    ],
+    "default_value" => 60,
+    "min" => "",
+    "max" => "",
+    "placeholder" => "",
+    "step" => "",
+    "prepend" => "",
+    "append" => __("days", "municipio-extended"),
+    "parent" => "group_56c6ba934d682",
+  ]);
+});
