@@ -449,3 +449,13 @@ ul li::marker {
 body {
   font-synthesis: none;
 }
+
+/*
+Fixes image modal sizing issues in webkit browsers
+*/
+.c-modal--is-panel.c-modal--is-panel {
+  height: max-content;
+  width: max-content;
+  max-height: 100svh;
+  max-width: 100svw;
+}
