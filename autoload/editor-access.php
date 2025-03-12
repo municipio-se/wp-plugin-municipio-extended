@@ -163,14 +163,78 @@ add_filter("admin_init", function () {
       "options.php?page=modularity-editor&id=single-page",
       // Events
       "edit.php?post_type=event",
-      // Anslag
-      "edit.php?post_type=anslag",
-      "post-new.php?post_type=anslag",
       // Users
       "profile.php",
       // Forms
       "edit.php?post_type=form-submissions",
     ];
+    /*
+    Temporary handling of custom post types & taxonomies from:
+    arvidsjaur.se
+    trelleborgvaxer.se
+    bildenavtrelleborg.se
+    soderslattsgymnasiet.trelleborg.se
+    trelleborg.se
+    hoor.se
+    salabostader.se
+    medborgarhuset.eslov.se
+    utveckla.eslov.se
+    foretag.eslov.se
+    programforoffentligmiljo.eslov.se
+    eslov.se
+    */
+    $customPostTypes = [
+      'anslag',
+      'alert',
+      'project',
+      'api-resource',
+      'modal-content',
+      'operational-status',
+      'bulletin-board',
+      'nyheter',
+      'driftinformation',
+      'external_page',
+      'fragor-svar',
+      'common-alert',
+      'area',
+      'projekt',
+      'driftsinformation',
+      'pressmeddelanden',
+      'job-listing',
+      'offentlig-konst',
+      'manadens-konst',
+    ];
+    foreach($customPostTypes as $cpt) {
+      $allowedMenuItems[] = "edit.php?post_type=".$cpt;
+      $allowedMenuItems[] = "post-new.php?post_type=".$cpt;
+    }
+    $customTaxonomies = [
+      'project_status',
+      'project_category',
+      'platser',
+      'teman',
+      'operational-status-category',
+      'operational-status-status',
+      'bulletin-board-category',
+      'external_page_content_type',
+      'common-alert-type',
+      'amne',
+      'job-listing-category',
+      'job-listing-source',
+      'anslagstyp',
+      'plats',
+      'status',
+      'detaljplanering',
+      'dialog',
+      'byggstatus',
+      'markanvisning',
+    ];
+    foreach($customTaxonomies as $ct) {
+      $allowedMenuItems[] = "edit-tags.php?taxonomy=".$ct;
+    }
+    /*
+    End temporary code
+    */
     if (
       current_user_can("editor") &&
       get_field("editor_access_to_redirection", "options") == 1
