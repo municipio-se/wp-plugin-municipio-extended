@@ -22,7 +22,6 @@
                 ' ' .
                 (isset($contact['last_name']) && !empty($contact['last_name']) ? $contact['last_name'] : ''),
             'wrapContent' => true,
-            'proseWrap' => true,
             'image' =>
                 !empty($contact['image']) && is_array($contact['image'])
                     ? array_merge($contact['image'], [
