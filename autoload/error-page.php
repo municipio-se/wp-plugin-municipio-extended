@@ -64,9 +64,9 @@ add_action(
  * with an onclick handler instead.
  */
 add_filter('ComponentLibrary/Component/Button/Data', function ($data) {
-    if (!empty($data['href']) && str_contains($data['href'], 'history.go')) {
-        $data['attributeList']['onclick'] = $data['href'];
-        $data['href'] = false;
+    if (!empty($data['href']) && str_starts_with($data['href'], 'javascript:')) {
+        $data['attributeList']['onclick'] = substr($data['href'], strlen('javascript:'));
+        unset($data['href']);
         $data['componentElement'] = 'button';
     }
     return $data;
