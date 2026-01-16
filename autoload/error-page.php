@@ -1,5 +1,20 @@
 <?php
 
+/**
+ * Disable verbose page rules in WordPress Multisite.
+ *
+ * Multisite enables use_verbose_page_rules by default, which causes non-existent
+ * pages to return 200 OK with frontpage content instead of 404. This happens because
+ * WordPress validates page existence before accepting rewrite matches, and when no
+ * page exists it falls back to the frontpage with empty query_vars.
+ *
+ * Requires rewrite flush after activation: wp rewrite flush or Settings → Permalinks → Save.
+ */
+add_action('init', function () {
+    global $wp_rewrite;
+    $wp_rewrite->use_verbose_page_rules = false;
+}, 1);
+
 function mx_get_custom_404_page() {
   static $custom_page;
   if (isset($custom_page)) {
