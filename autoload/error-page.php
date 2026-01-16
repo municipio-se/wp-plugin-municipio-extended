@@ -55,3 +55,19 @@ add_action(
   },
   11,
 );
+
+/**
+ * Fix the "Go back" button on 404 pages.
+ *
+ * The ComponentLibrary TagSanitizer strips "javascript:" from href values for security,
+ * which breaks the history.go(-1) navigation. This filter converts the link to a button
+ * with an onclick handler instead.
+ */
+add_filter('ComponentLibrary/Component/Button/Data', function ($data) {
+    if (!empty($data['href']) && str_contains($data['href'], 'history.go')) {
+        $data['attributeList']['onclick'] = $data['href'];
+        $data['href'] = false;
+        $data['componentElement'] = 'button';
+    }
+    return $data;
+});
