@@ -664,7 +664,7 @@ Fixes image modal sizing issues in webkit browsers
 }
 
 body {
-  overflow-x: hidden;
+  overflow-x: clip; /* Prevents horizontal scrolling more reliably than `hidden` */
 }
 
 /**
