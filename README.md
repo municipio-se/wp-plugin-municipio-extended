@@ -215,8 +215,7 @@ Symbols cache URL.
 `apply_filters( 'mx_should_ignore_module_group_backgrounds', bool $ignore_backgrounds, string $sidebar, mixed $context, array $visible_sidebars )`
 Override module group background support per sidebar/context.
 
-## Development
+## Development and Contribution
 
-- Install dependencies with the project package manager.
-- Build and watch assets with `pnpm dev`.
-- Do not edit generated assets directly.
+Read more about how to contribute in the
+[CONTRIBUTING.md file](CONTRIBUTING.md).

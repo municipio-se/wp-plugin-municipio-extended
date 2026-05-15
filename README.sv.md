@@ -216,8 +216,6 @@ Behåll `with_front` för valda taxonomier.
 `apply_filters( 'mx_should_ignore_module_group_backgrounds', bool $ignore_backgrounds, string $sidebar, mixed $context, array $visible_sidebars )`
 Styr stöd för modulgruppsbakgrunder per sidebar/context.
 
-## Utveckling
+## Utveckling och Bidrag
 
-- Installera dependencies med projektets package manager.
-- Bygg och bevaka assets med `pnpm dev`.
-- Ändra inte genererade assets direkt.
+Läs mer om hur du kan bidra i [CONTRIBUTING.md-filen](CONTRIBUTING.md).
