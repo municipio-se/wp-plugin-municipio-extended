@@ -41,7 +41,9 @@ add_action("delete_attachment", function ($post_id) {
 add_action(
   "attachment_updated",
   function ($post_id, $post_after, $post_before) {
-    $old_url = isset($post_before->ID) ? wp_get_attachment_url($post_before->ID) : null;
+    $old_url = isset($post_before->ID)
+      ? wp_get_attachment_url($post_before->ID)
+      : null;
     $new_url = wp_get_attachment_url($post_id);
     if ($old_url && $old_url !== $new_url) {
       $transient_key = "attachment_url_to_postid_" . md5($old_url);

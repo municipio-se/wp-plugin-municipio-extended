@@ -185,66 +185,66 @@ add_filter("admin_init", function () {
     eslov.se
     */
     $customPostTypes = [
-      'anslag',
-      'alert',
-      'project',
-      'api-resource',
-      'modal-content',
-      'operational-status',
-      'bulletin-board',
-      'nyheter',
-      'driftinformation',
-      'external_page',
-      'fragor-svar',
-      'common-alert',
-      'area',
-      'projekt',
-      'driftsinformation',
-      'pressmeddelanden',
-      'job-listing',
-      'offentlig-konst',
-      'manadens-konst',
-      'anslagstavla',
+      "anslag",
+      "alert",
+      "project",
+      "api-resource",
+      "modal-content",
+      "operational-status",
+      "bulletin-board",
+      "nyheter",
+      "driftinformation",
+      "external_page",
+      "fragor-svar",
+      "common-alert",
+      "area",
+      "projekt",
+      "driftsinformation",
+      "pressmeddelanden",
+      "job-listing",
+      "offentlig-konst",
+      "manadens-konst",
+      "anslagstavla",
     ];
-    foreach($customPostTypes as $cpt) {
-      $allowedMenuItems[] = "edit.php?post_type=".$cpt;
-      $allowedMenuItems[] = "post-new.php?post_type=".$cpt;
+    foreach ($customPostTypes as $cpt) {
+      $allowedMenuItems[] = "edit.php?post_type=" . $cpt;
+      $allowedMenuItems[] = "post-new.php?post_type=" . $cpt;
     }
 
     // Allow editors to manage Modularity content
     $all_post_types = get_post_types();
     $mod_post_types = array_filter($all_post_types, function ($post_type_name) {
-      return strpos($post_type_name, 'mod-') === 0;
+      return strpos($post_type_name, "mod-") === 0;
     });
     foreach ($mod_post_types as $post_type_name) {
       $allowedMenuItems[] = "edit.php?post_type=" . $post_type_name;
       $allowedMenuItems[] = "post-new.php?post_type=" . $post_type_name;
     }
     $allowedMenuItems[] = "modularity";
-    
+
     $customTaxonomies = [
-      'project_status',
-      'project_category',
-      'platser',
-      'teman',
-      'operational-status-category',
-      'operational-status-status',
-      'bulletin-board-category',
-      'external_page_content_type',
-      'common-alert-type',
-      'amne',
-      'job-listing-category',
-      'job-listing-source',
-      'anslagstyp',
-      'plats',
-      'status',
-      'detaljplanering',
-      'dialog',
-      'byggstatus',
-      'markanvisning',
+      "project_status",
+      "project_category",
+      "platser",
+      "teman",
+      "operational-status-category",
+      "operational-status-status",
+      "bulletin-board-category",
+      "external_page_content_type",
+      "common-alert-type",
+      "amne",
+      "job-listing-category",
+      "job-listing-source",
+      "anslagstyp",
+      "plats",
+      "status",
+      "detaljplanering",
+      "dialog",
+      "byggstatus",
+      "markanvisning",
     ];
-    foreach($customTaxonomies as $ct) {
-      $allowedMenuItems[] = "edit-tags.php?taxonomy=".$ct;
+    foreach ($customTaxonomies as $ct) {
+      $allowedMenuItems[] = "edit-tags.php?taxonomy=" . $ct;
     }
     /*
     End temporary code

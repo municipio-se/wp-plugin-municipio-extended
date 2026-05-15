@@ -517,12 +517,15 @@ function mx_search_ajax_handler() {
      * @param bool $enabled Whether search errors should be logged.
      * @return bool Whether search errors should be logged.
      */
-    if (apply_filters("mx_search_error_logging_enabled", WP_DEBUG && WP_DEBUG_LOG)) {
-      // If WP_DEBUG_LOG is a string and belongs to a valid directory, use it as the log path. 
+    if (
+      apply_filters("mx_search_error_logging_enabled", WP_DEBUG && WP_DEBUG_LOG)
+    ) {
+      // If WP_DEBUG_LOG is a string and belongs to a valid directory, use it as the log path.
       // Otherwise, default to wp-content/debug.log
-      $log_path = is_string(WP_DEBUG_LOG) && is_dir(dirname(WP_DEBUG_LOG))
-        ? WP_DEBUG_LOG
-        : WP_CONTENT_DIR . '/debug.log';
+      $log_path =
+        is_string(WP_DEBUG_LOG) && is_dir(dirname(WP_DEBUG_LOG))
+          ? WP_DEBUG_LOG
+          : WP_CONTENT_DIR . "/debug.log";
 
       /**
        * Filters the search error log file path.
@@ -532,20 +535,29 @@ function mx_search_ajax_handler() {
        * @param string $log_path Search error log file path.
        * @return string Filtered search error log file path.
        */
-      $log_path = apply_filters('mx_search_error_log_path', $log_path);
+      $log_path = apply_filters("mx_search_error_log_path", $log_path);
 
       // Log the error with a timestamp, site URL, search query, error message, file and line number.
       error_log(
-        "[" . date("Y-m-d H:i:s") . "]" .
-          " site=" . home_url() .
-          " query=" . ($data["s"] ?? "(unknown)") .
-          " error=" . $e->getMessage() .
-          " in " . $e->getFile() . " on line " . $e->getLine() . PHP_EOL,
+        "[" .
+          date("Y-m-d H:i:s") .
+          "]" .
+          " site=" .
+          home_url() .
+          " query=" .
+          ($data["s"] ?? "(unknown)") .
+          " error=" .
+          $e->getMessage() .
+          " in " .
+          $e->getFile() .
+          " on line " .
+          $e->getLine() .
+          PHP_EOL,
         3,
         $log_path,
       );
     }
-    
+
     return wp_send_json([
       "success" => false,
       "error" => "An error occurred while searching.",

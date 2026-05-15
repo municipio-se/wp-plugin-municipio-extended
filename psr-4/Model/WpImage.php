@@ -31,9 +31,16 @@ class WpImage extends WpPost implements WpImageInterface {
       }
       if ($post && $matches[3]) {
         $meta = get_post_meta($post, "_wp_attachment_metadata", true);
-        if(isset($meta["sizes"]) && is_array($meta["sizes"]) && !empty($meta["sizes"])) {
+        if (
+          isset($meta["sizes"]) &&
+          is_array($meta["sizes"]) &&
+          !empty($meta["sizes"])
+        ) {
           foreach ($meta["sizes"] as $key => $value) {
-            if ("-" . $value["width"] . "x" . $value["height"] === $matches[3]) {
+            if (
+              "-" . $value["width"] . "x" . $value["height"] ===
+              $matches[3]
+            ) {
               $size = $key;
               break;
             }
