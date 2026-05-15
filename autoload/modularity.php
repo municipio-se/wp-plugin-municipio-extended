@@ -4,6 +4,15 @@ add_filter(
   "Modularity/Display/BeforeModule",
   function ($beforeModule, $args, $postType, $postId) {
     if (preg_match("/^(.*?)>(.*)$/s", $beforeModule, $matches)) {
+      /**
+       * Filters attributes added to the outer Modularity module wrapper.
+       *
+       * @param array $attrs    Wrapper attributes.
+       * @param array $args     Module display arguments.
+       * @param string $postType Module post type.
+       * @param int   $postId   Module post ID.
+       * @return array Filtered wrapper attributes.
+       */
       $attrs = apply_filters(
         "mx/module_wrapper_attrs",
         [],
@@ -133,6 +142,16 @@ function mx_should_ignore_module_group_backgrounds(
   ) {
     $ignore_backgrounds = true;
   }
+
+  /**
+   * Filters whether module group backgrounds should be ignored.
+   *
+   * @param bool   $ignore_backgrounds Whether backgrounds should be ignored.
+   * @param string $sidebar            Sidebar ID.
+   * @param mixed  $context            Modularity display context.
+   * @param array  $visible_sidebars   Visible sidebar IDs.
+   * @return bool Whether backgrounds should be ignored.
+   */
   $ignore_backgrounds = apply_filters(
     "mx_should_ignore_module_group_backgrounds",
     $ignore_backgrounds,

@@ -15,6 +15,15 @@ class Model implements \ArrayAccess {
 
   public static function create(string $class, ...$args): Model {
     $namespaces = ["MunicipioExtended\\Model\\", "MuPlugin\\Model\\"];
+
+    /**
+     * Filters the namespaces searched when creating a Municipio Extended model.
+     *
+     * @param string[] $namespaces Model namespaces.
+     * @param string   $class      Short model class name.
+     * @param array    $args       Arguments passed to the model constructor.
+     * @return string[] Filtered model namespaces.
+     */
     $namespaces = apply_filters(
       "mx/model/namespaces",
       $namespaces,
@@ -29,6 +38,14 @@ class Model implements \ArrayAccess {
         break;
       }
     }
+
+    /**
+     * Filters the resolved model class before it is instantiated.
+     *
+     * @param class-string|null $full_class Resolved model class, or null when none matched.
+     * @param string            $class      Short model class name.
+     * @return class-string|null Filtered model class.
+     */
     $full_class = apply_filters("mx/model/class", $full_class, $class);
     if (!$full_class) {
       throw new \InvalidArgumentException("No model class found for $class");

@@ -123,6 +123,12 @@ class Icon extends MxBaseController {
 
   private function altText(): array {
     if (function_exists("apply_filters")) {
+      /**
+       * Filters the icon alt text map.
+       *
+       * @param array $alt_text Alt text keyed by icon name.
+       * @return array Filtered alt text map.
+       */
       return apply_filters(
         $this->createFilterName($this) . "/" . ucfirst(__FUNCTION__),
         $this->altText,
@@ -133,6 +139,12 @@ class Icon extends MxBaseController {
 
   private function altTextPrefix(): string {
     if (function_exists("apply_filters")) {
+      /**
+       * Filters the prefix prepended to icon alt text.
+       *
+       * @param string $prefix Alt text prefix.
+       * @return string Filtered alt text prefix.
+       */
       return apply_filters(
         $this->createFilterName($this) . "/" . ucfirst(__FUNCTION__),
         $this->altTextPrefix,
@@ -143,6 +155,12 @@ class Icon extends MxBaseController {
 
   private function altTextUndefined(): string {
     if (function_exists("apply_filters")) {
+      /**
+       * Filters the fallback alt text for unknown icons.
+       *
+       * @param string $alt_text Fallback alt text.
+       * @return string Filtered fallback alt text.
+       */
       return apply_filters(
         $this->createFilterName($this) . "/" . ucfirst(__FUNCTION__),
         $this->altTextUndefined,

@@ -15,11 +15,25 @@ add_action(
 function mx_get_materialsymbols_cache_path() {
   $upload_dir = wp_upload_dir();
   $path = $upload_dir["basedir"] . "/cache/materialsymbols";
+
+  /**
+   * Filters the filesystem path used for cached Material Symbols assets.
+   *
+   * @param string $path Cache directory path.
+   * @return string Filtered cache directory path.
+   */
   return apply_filters("mx_materialsymbols_cache_path", $path);
 }
 function mx_get_materialsymbols_cache_url() {
   $upload_dir = wp_upload_dir();
   $url = $upload_dir["baseurl"] . "/cache/materialsymbols";
+
+  /**
+   * Filters the public URL used for cached Material Symbols assets.
+   *
+   * @param string $url Cache directory URL.
+   * @return string Filtered cache directory URL.
+   */
   return apply_filters("mx_materialsymbols_cache_url", $url);
 }
 

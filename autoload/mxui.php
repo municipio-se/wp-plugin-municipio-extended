@@ -221,6 +221,12 @@ add_filter("Municipio/Search/Hero_search_placeholder", function ($placeholder) {
 });
 
 function mxui_debug_enabled() {
+  /**
+   * Filters whether MXUI debug output is enabled.
+   *
+   * @param bool $enabled Whether debug output is enabled.
+   * @return bool Whether debug output is enabled.
+   */
   return apply_filters(
     "mxui/debug_enabled",
     defined("MXUI_DEBUG") ? constant("MXUI_DEBUG") : false,

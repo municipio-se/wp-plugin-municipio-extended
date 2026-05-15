@@ -39,6 +39,12 @@ add_action("acf/init", function () {
       "municipio-extended",
     ),
     "fields" => array_values(
+      /**
+       * Filters the ACF fields registered for the navigation module.
+       *
+       * @param array $fields Navigation module field definitions keyed by field name.
+       * @return array Filtered field definitions.
+       */
       apply_filters("mx_mod_navigation_fields", [
         "mod_navigation_format" => [
           "key" => "field_mod_navigation_format",

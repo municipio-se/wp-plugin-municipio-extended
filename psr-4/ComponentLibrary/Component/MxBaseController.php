@@ -33,13 +33,28 @@ class MxBaseController extends \ComponentLibrary\Component\BaseController {
     $modifiers = [];
 
     if (function_exists("apply_filters")) {
-      //Applies a general wp filter
+      /**
+       * Filters modifiers applied to every Component Library component.
+       *
+       * @param array $modifiers Component modifiers.
+       * @param mixed $context   Component context data.
+       * @return array Filtered component modifiers.
+       */
       $modifiers = apply_filters(
         "ComponentLibrary/Component/Modifier",
         $modifiers,
         $this->data["context"],
       );
-      //Applies component specific wp filter
+
+      /**
+       * Filters modifiers applied to a specific Component Library component.
+       *
+       * The dynamic portion of the hook name is the component class name.
+       *
+       * @param array $modifiers Component modifiers.
+       * @param mixed $context   Component context data.
+       * @return array Filtered component modifiers.
+       */
       $modifiers = apply_filters(
         "ComponentLibrary/Component/" . $componentName . "/Modifier",
         $modifiers,

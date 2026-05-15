@@ -35,6 +35,13 @@
     $meta_fields = array_map(function ($meta_field) {
         return [
             'field' => $meta_field,
+            /**
+             * Filters the display label for archive meta fields.
+             *
+             * @param string $label      Generated meta field label.
+             * @param string $meta_field Meta field key.
+             * @return string Filtered meta field label.
+             */
             'label' => apply_filters(
                 'mx/meta_field/label',
                 ucfirst(preg_replace('/_/', ' ', $meta_field)),
@@ -94,6 +101,13 @@
                           ', ',
                           array_map(
                               function ($field) {
+                                  /**
+                                   * Filters the display value for an archive meta field.
+                                   *
+                                   * @param mixed  $value Meta field value.
+                                   * @param string $field Meta field key.
+                                   * @return mixed Filtered meta field display value.
+                                   */
                                   return apply_filters('mx/meta_field/display_value', $field['value'], $field['field']);
                               },
                               array_filter($post->metaValues, function ($field) use ($meta_field) {

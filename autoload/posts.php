@@ -71,6 +71,12 @@ add_filter(
       ];
       // error_log(var_export(["post_type" => $post_type], true));
     } elseif (is_array($args["rewrite"])) {
+      /**
+       * Filters post types that should keep the WordPress front base in rewrites.
+       *
+       * @param string[] $post_types Post type names.
+       * @return string[] Filtered post type names.
+       */
       if (
         !in_array($post_type, apply_filters("mx_post_types_with_front", []))
       ) {
@@ -95,6 +101,12 @@ add_filter(
       ];
       // error_log(var_export(["taxonomy" => $taxonomy], true));
     } elseif (is_array($args["rewrite"])) {
+      /**
+       * Filters taxonomies that should keep the WordPress front base in rewrites.
+       *
+       * @param string[] $taxonomies Taxonomy names.
+       * @return string[] Filtered taxonomy names.
+       */
       if (!in_array($taxonomy, apply_filters("mx_taxonomies_with_front", []))) {
         // if (($args["rewrite"]["with_front"] ?? null) !== false) {
         //   error_log(var_export(["taxonomy" => $taxonomy], true));

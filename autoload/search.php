@@ -184,9 +184,12 @@ function mx_search_ajax_handler() {
   ];
 
   /**
-   * Filter the basic Elasticsearch bool query before performing wrapping it in a function_score query.
-   * @param array $query The bool query.
-   * @param array $data The Ajax request data.
+   * Filters the base Elasticsearch bool query before it is wrapped in a function_score query.
+   *
+   * @param array $query Search bool query.
+   * @param array $data Ajax request data.
+   * @param array $settings_post_types Search settings keyed by post type.
+   * @return array Filtered search bool query.
    */
   $query = apply_filters(
     "mx_search_es_query",
@@ -204,9 +207,11 @@ function mx_search_ajax_handler() {
       $mx_search_settings_post_types[$post_type]["boost"] ?? 1;
   }
   /**
-   * Filter the boosted post types before performing the search.
-   * @param array $boosted_post_types The boosted post types with or without weights.
-   * @param array $data The Ajax request data.
+   * Filters post type boost weights before performing the search.
+   *
+   * @param array $boosted_post_types Post type boost weights.
+   * @param array $data Ajax request data.
+   * @return array Filtered post type boost weights.
    */
   $boosted_post_types = apply_filters(
     "mx_search_boosted_post_types",
@@ -236,9 +241,11 @@ function mx_search_ajax_handler() {
   );
 
   /**
-   * Filter the functions corresponding to the post type boosts before passing it to the function_score query.
-   * @param array $boosted_post_type_functions The boosted post type functions.
-   * @param array $data The Ajax request data.
+   * Filters generated post type boost functions before the function_score query is built.
+   *
+   * @param array $boosted_post_type_functions Elasticsearch function definitions.
+   * @param array $data Ajax request data.
+   * @return array Filtered Elasticsearch function definitions.
    */
   $boosted_post_type_functions = apply_filters(
     "mx_search_boosted_post_type_functions",
@@ -257,9 +264,11 @@ function mx_search_ajax_handler() {
     $decaying_post_types[] = $post_type;
   }
   /**
-   * Filter the decaying post types before performing the search.
-   * @param array $decaying_post_types The decaying post types with or without params.
-   * @param array $data The Ajax request data.
+   * Filters post types using date decay before performing the search.
+   *
+   * @param array $decaying_post_types Post types with optional decay params.
+   * @param array $data Ajax request data.
+   * @return array Filtered decaying post type definitions.
    */
   $decaying_post_types = apply_filters(
     "mx_search_decaying_post_types",
@@ -303,9 +312,11 @@ function mx_search_ajax_handler() {
   );
 
   /**
-   * Filter the functions corresponding to the post type decays before passing it to the function_score query.
-   * @param array $decaying_post_type_functions The decaying post type functions.
-   * @param array $data The Ajax request data.
+   * Filters generated date decay functions before the function_score query is built.
+   *
+   * @param array $decaying_post_type_functions Elasticsearch function definitions.
+   * @param array $data Ajax request data.
+   * @return array Filtered Elasticsearch function definitions.
    */
   $decaying_post_type_functions = apply_filters(
     "mx_search_decaying_post_type_functions",
@@ -324,10 +335,11 @@ function mx_search_ajax_handler() {
   ];
 
   /**
-   * Filter the function query before performing the search.
-   * @param array $function_score The Elasticsearch function_score query that wraps the base query.
-   * @param array $data The Ajax request data.
-   * @return array The modified function_score query.
+   * Filters the function_score query before performing the search.
+   *
+   * @param array $function_score Elasticsearch function_score query.
+   * @param array $data Ajax request data.
+   * @return array Filtered function_score query.
    */
   $function_score = apply_filters(
     "mx_search_es_function_score",
@@ -364,9 +376,11 @@ function mx_search_ajax_handler() {
   ];
 
   /**
-   * Filter the Elasticsearch body before performing the search.
-   * @param array $es_body The Elasticsearch query body.
-   * @param array $data The Ajax request data.
+   * Filters the final Elasticsearch request body before performing the search.
+   *
+   * @param array $es_body Elasticsearch request body.
+   * @param array $data Ajax request data.
+   * @return array Filtered Elasticsearch request body.
    */
   $es_body = apply_filters("mx_search_es_body", $es_body, $data);
 
@@ -419,10 +433,12 @@ function mx_search_ajax_handler() {
     $default_visible_fields = ["date"];
 
     /**
-     * Filter the hit source mapping before transforming the hits.
-     * @param array $hit_source_mapping The hit source mapping.
-     * @param array $es_body The Elasticsearch query body.
-     * @param array $data The Ajax request data.
+     * Filters the hit source mapping before transforming search hits.
+     *
+     * @param array $hit_source_mapping Mapping of result keys to callbacks.
+     * @param array $es_body Elasticsearch request body.
+     * @param array $data Ajax request data.
+     * @return array Filtered hit source mapping.
      */
     $hit_source_mapping = apply_filters(
       "mx_search_hit_source_mapping",
@@ -460,12 +476,14 @@ function mx_search_ajax_handler() {
         );
 
         /**
-         * Filter the transformed hit before returning it.
-         * @param array $transformed_hit The transformed hit.
-         * @param array $hit The original hit.
-         * @param array $es_results The Elasticsearch results.
-         * @param array $es_body The Elasticsearch query body.
-         * @param array $data The Ajax request data.
+         * Filters a transformed Elasticsearch hit before it is returned.
+         *
+         * @param array $transformed_hit Transformed search hit.
+         * @param array $hit Original Elasticsearch hit.
+         * @param array $es_results Full Elasticsearch response.
+         * @param array $es_body Elasticsearch request body.
+         * @param array $data Ajax request data.
+         * @return array Filtered transformed search hit.
          */
         return apply_filters(
           "mx_search_es_hit",
@@ -481,21 +499,39 @@ function mx_search_ajax_handler() {
     ];
 
     /**
-     * Filter the search results before returning them.
-     * @param array $results The search results.
-     * @param array $es_results The Elasticsearch results.
+     * Filters the final AJAX search response before it is sent.
+     *
+     * @param array $results Search response.
+     * @param array $es_results Full Elasticsearch response.
+     * @return array Filtered search response.
      */
     $results = apply_filters("mx_search_results", $results, $es_results);
 
     wp_send_json($results);
   } catch (Exception $e) {
-    // Log the error to the debug log if error logging is enabled.
+    /**
+     * Filters whether search error logging is enabled.
+     *
+     * @since 2025.12.11
+     *
+     * @param bool $enabled Whether search errors should be logged.
+     * @return bool Whether search errors should be logged.
+     */
     if (apply_filters("mx_search_error_logging_enabled", WP_DEBUG && WP_DEBUG_LOG)) {
       // If WP_DEBUG_LOG is a string and belongs to a valid directory, use it as the log path. 
       // Otherwise, default to wp-content/debug.log
       $log_path = is_string(WP_DEBUG_LOG) && is_dir(dirname(WP_DEBUG_LOG))
         ? WP_DEBUG_LOG
         : WP_CONTENT_DIR . '/debug.log';
+
+      /**
+       * Filters the search error log file path.
+       *
+       * @since 2025.12.11
+       *
+       * @param string $log_path Search error log file path.
+       * @return string Filtered search error log file path.
+       */
       $log_path = apply_filters('mx_search_error_log_path', $log_path);
 
       // Log the error with a timestamp, site URL, search query, error message, file and line number.
@@ -530,12 +566,29 @@ add_action("wp_ajax_nopriv_mx_search", "mx_search_ajax_handler"); // For non-log
 add_filter(
   "ep_post_sync_args_post_prepare_meta",
   function ($post_args, $post_id) {
+    /**
+     * Filters the content type stored in the ElasticPress index.
+     *
+     * @param string $content_type Content type value.
+     * @param array  $post_args Indexed post arguments.
+     * @param int    $post_id Post ID.
+     * @return string Filtered content type value.
+     */
     $post_args["content_type"] = apply_filters(
       "mx_search_post_content_type",
       $post_args["post_type"],
       $post_args,
       $post_id,
     );
+
+    /**
+     * Filters the formatted content type stored in the ElasticPress index.
+     *
+     * @param string $label Formatted content type label.
+     * @param array  $post_args Indexed post arguments.
+     * @param int    $post_id Post ID.
+     * @return string Filtered formatted content type label.
+     */
     $post_args["content_type_formatted"] = apply_filters(
       "mx_search_post_content_type_formatted",
       get_post_type_object($post_args["post_type"])->labels->singular_name,

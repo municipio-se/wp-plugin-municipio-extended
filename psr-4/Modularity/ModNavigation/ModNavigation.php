@@ -150,7 +150,18 @@ class ModNavigation extends MxModule {
       return [];
     }
 
-    // Check if we should use Nested Pages menu instead of page tree
+    /**
+     * Filters whether child navigation should use the Nested Pages menu.
+     *
+     * @since 2025.12.1
+     *
+     * @param bool     $use_np Whether to use the Nested Pages menu.
+     * @param \WP_Post $post   Current post.
+     * @param string   $source Navigation source, here `children`.
+     * @param string   $slug   Module slug.
+     * @param int      $id     Module ID.
+     * @return bool Whether to use the Nested Pages menu.
+     */
     $use_np = apply_filters(
       "mx_mod_navigation_use_nested_pages",
       false,
@@ -222,7 +233,18 @@ class ModNavigation extends MxModule {
       return [];
     }
 
-    // Check if we should use Nested Pages menu instead of page tree
+    /**
+     * Filters whether sibling navigation should use the Nested Pages menu.
+     *
+     * @since 2025.12.1
+     *
+     * @param bool     $use_np Whether to use the Nested Pages menu.
+     * @param \WP_Post $post   Current post.
+     * @param string   $source Navigation source, here `siblings`.
+     * @param string   $slug   Module slug.
+     * @param int      $id     Module ID.
+     * @return bool Whether to use the Nested Pages menu.
+     */
     $use_np = apply_filters(
       "mx_mod_navigation_use_nested_pages",
       false,
@@ -375,6 +397,16 @@ class ModNavigation extends MxModule {
   public function data(): array {
     $data = parent::data();
     $data["items"] = $this->getItems();
+
+    /**
+     * Filters whether an empty navigation module should be hidden.
+     *
+     * @param bool   $hide Whether the module should be hidden.
+     * @param string $slug Module slug.
+     * @param int    $id   Module ID.
+     * @param array  $data Module data.
+     * @return bool Whether the module should be hidden.
+     */
     $data["hideIfEmpty"] = apply_filters(
       "mx/mod_navigation/hide_if_empty",
       !$data["show_if_empty"],
