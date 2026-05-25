@@ -1162,6 +1162,30 @@ msgctxt "Navigation Module Grid Style Choice"
 msgid "Blocks"
 msgstr "Block"
 
+#: autoload/mod-text.php:83
+msgid "Primary"
+msgstr "Primär"
+
+#: autoload/mod-text.php:87
+msgid "Secondary"
+msgstr "Sekundär"
+
+#: autoload/mod-text.php:91
+msgid "Complement"
+msgstr "Komplement"
+
+#: autoload/mod-text.php:124
+msgid "None"
+msgstr "Ingen"
+
+#: autoload/mod-text.php:143
+msgid "Display style"
+msgstr "Visningssätt"
+
+#: autoload/mod-text.php:145
+msgid "Show the text as an article (without a box)"
+msgstr "Visa texten som en artikel (utan ruta)"
+
 #~ msgid "Transparent"
 #~ msgstr "Genomskinlig"
 
