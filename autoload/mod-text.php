@@ -7,9 +7,11 @@ add_filter("Modularity/Display/mod-text/viewData", function ($data) {
     $data["post_content"] = mx_replace_builtin_classes($data["post_content"]);
   }
 
-  $presets = mx_mod_text_box_color_presets();
-  $preset = $data["box_color_preset"] ?? "";
-  $data["box_color"] = $presets[$preset]["color"] ?? "";
+  if (mx_mod_text_use_color_presets()) {
+    $presets = mx_mod_text_box_color_presets();
+    $preset = $data["box_color_preset"] ?? "";
+    $data["box_color"] = $presets[$preset]["color"] ?? "";
+  }
 
   return $data;
 });
@@ -17,27 +19,27 @@ add_filter("Modularity/Display/mod-text/viewData", function ($data) {
 function mx_replace_builtin_classes($content) {
   return str_replace(
     [
-      // Old inline transition button
+      //Old inline transition button
       "btn-theme-first",
       "btn-theme-second",
       "btn-theme-third",
       "btn-theme-fourth",
       "btn-theme-fifth",
 
-      // Gutenberg block image
+      //Gutenberg block image
       "wp-block-image",
       "wp-element-caption",
       "<figcaption>",
     ],
     [
-      // Old inline transition button
+      //Old inline transition button
       "c-button c-button__filled c-button__filled--primary c-button--md",
       "c-button c-button__filled c-button__filled--secondary c-button--md",
       "c-button c-button__filled c-button__filled--secondary c-button--md",
       "c-button c-button__filled c-button__filled--secondary c-button--md",
       "c-button c-button__filled c-button__filled--secondary c-button--md",
 
-      // Gutenberg block image
+      //Gutenberg block image
       "c-image",
       "c-image__caption",
       '<figcaption class="c-image__caption">',
@@ -61,6 +63,22 @@ function mx_process_content($content, $options = []) {
 }
 
 /**
+ * Whether the text module should use the preset dropdown instead of the
+ * legacy color picker.
+ *
+ * Off by default to preserve existing behavior. Sites opt in via the
+ * MUNICIPIO_EXTENDED_MOD_TEXT_USE_COLOR_PRESETS constant or the
+ * mx_mod_text_use_color_presets filter.
+ */
+function mx_mod_text_use_color_presets(): bool {
+  $enabled =
+    defined("MUNICIPIO_EXTENDED_MOD_TEXT_USE_COLOR_PRESETS") &&
+    constant("MUNICIPIO_EXTENDED_MOD_TEXT_USE_COLOR_PRESETS");
+
+  return (bool) apply_filters("mx_mod_text_use_color_presets", $enabled);
+}
+
+/**
  * Predefined background colors for the text module box.
  *
  * Defaults are resolved from the active project's Municipio color palette, so
@@ -70,42 +88,89 @@ function mx_process_content($content, $options = []) {
  * @return array<string, array{label: string, color: string}>
  */
 function mx_mod_text_box_color_presets(): array {
+  $sources = [
+    "primary" => ["color_palette_primary", "base"],
+    "secondary" => ["color_palette_secondary", "base"],
+    "complementary" => ["color_palette_complement", "default"],
+    "info" => ["color_palette_state_info", "base"],
+    "success" => ["color_palette_state_success", "base"],
+    "warning" => ["color_palette_state_warning", "base"],
+    "danger" => ["color_palette_state_danger", "base"],
+    "white" => ["color_palette_monotone", "white"],
+    "neutral" => ["color_palette_monotone", "light"],
+    "card" => ["color_card", "background"],
+    "background" => ["color_background", "background"],
+  ];
+
+  $labels = [
+    "primary" => __("Primary", "municipio-extended"),
+    "secondary" => __("Secondary", "municipio-extended"),
+    "complementary" => __("Complementary", "municipio-extended"),
+    "info" => __("Info", "municipio-extended"),
+    "success" => __("Success", "municipio-extended"),
+    "warning" => __("Warning", "municipio-extended"),
+    "danger" => __("Danger", "municipio-extended"),
+    "white" => __("White", "municipio-extended"),
+    "neutral" => __("Neutral", "municipio-extended"),
+    "card" => __("Card", "municipio-extended"),
+    "background" => __("Background", "municipio-extended"),
+  ];
+
   $palettes = class_exists(\Municipio\Helper\Color::class)
-    ? \Municipio\Helper\Color::getPalettes()
+    ? \Municipio\Helper\Color::getPalettes(
+      array_values(array_unique(array_column($sources, 0))),
+    )
     : [];
 
-  $base = function (string $option) use ($palettes): ?string {
-    return $palettes[$option]["base"] ?? null;
-  };
-
-  $presets = [
-    "primary" => [
-      "label" => __("Primary", "municipio-extended"),
-      "color" => $base("color_palette_primary"),
-    ],
-    "secondary" => [
-      "label" => __("Secondary", "municipio-extended"),
-      "color" => $base("color_palette_secondary"),
-    ],
-    "complement" => [
-      "label" => __("Complement", "municipio-extended"),
-      "color" => $base("color_palette_complement"),
-    ],
-  ];
+  $presets = [];
+  foreach ($sources as $key => [$option, $subKey]) {
+    $presets[$key] = [
+      "label" => $labels[$key],
+      "color" => $palettes[$option][$subKey] ?? null,
+    ];
+  }
 
   // Drop presets that have no resolvable color on this project.
   $presets = array_filter($presets, fn($preset) => !empty($preset["color"]));
 
-  return apply_filters("MunicipioExtended/ModText/BoxColorPresets", $presets);
+  return apply_filters("mx_mod_text_box_color_presets", $presets);
 }
 
 add_action("acf/init", function () {
+  if (mx_mod_text_use_color_presets()) {
+    acf_add_local_field([
+      "key" => "field_mod_text_box_color_preset",
+      "label" => __("Text box color", "municipio-extended"),
+      "name" => "box_color_preset",
+      "aria-label" => "",
+      "type" => "select",
+      "instructions" => "",
+      "required" => 0,
+      "conditional_logic" => 0,
+      "wrapper" => [
+        "width" => "",
+        "class" => "",
+        "id" => "",
+      ],
+      "choices" => [],
+      "default_value" => "",
+      "return_format" => "value",
+      "allow_null" => 1,
+      "multiple" => 0,
+      "ui" => 0,
+      "ajax" => 0,
+      "placeholder" => __("None", "municipio-extended"),
+      "parent" => "group_5891b49127038",
+    ]);
+    return;
+  }
+
   acf_add_local_field([
-    "key" => "field_mod_text_box_color_preset",
+    "key" => "field_mod_text_box_color",
     "label" => __("Text box color", "municipio-extended"),
-    "name" => "box_color_preset",
+    "name" => "box_color",
     "aria-label" => "",
-    "type" => "select",
+    "type" => "color_picker",
     "instructions" => "",
     "required" => 0,
     "conditional_logic" => 0,
@@ -114,14 +179,10 @@ add_action("acf/init", function () {
       "class" => "",
       "id" => "",
     ],
-    "choices" => [],
-    "default_value" => "",
-    "return_format" => "value",
-    "allow_null" => 1,
-    "multiple" => 0,
+    "default_value" => 0,
+    "ui_on_text" => "",
+    "ui_off_text" => "",
     "ui" => 0,
-    "ajax" => 0,
-    "placeholder" => __("None", "municipio-extended"),
     "parent" => "group_5891b49127038",
   ]);
 });
