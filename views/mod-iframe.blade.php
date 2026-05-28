@@ -13,7 +13,11 @@
   @component('mxui.iframe', [
       'url' => $url,
       'height' => $height,
-      'title' => $description ?? $post_title,
+      'title' => mx_coalesce_string([
+          $description ?? null,
+          $postTitle ?? null,
+          $post_title ?? null,
+      ]) ?: null,
   ])
   @endcomponent
 </div>

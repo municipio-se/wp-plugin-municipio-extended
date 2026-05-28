@@ -22,6 +22,7 @@
               'aspect-[--iframe-aspect-ratio] grid grid-cols-[100%] *:row-start-1 *:col-start-1',
           ],
           'iframe-class' => 'relative z-[1] aspect-[--iframe-aspect-ratio]',
+          'iframe-title' => $title,
           'style' => [
               '--iframe-aspect-ratio' => $iframe['aspectRatio'] ?? null,
           ],
