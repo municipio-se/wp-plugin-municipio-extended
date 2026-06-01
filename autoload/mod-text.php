@@ -75,6 +75,14 @@ function mx_mod_text_use_color_presets(): bool {
     defined("MUNICIPIO_EXTENDED_MOD_TEXT_USE_COLOR_PRESETS") &&
     constant("MUNICIPIO_EXTENDED_MOD_TEXT_USE_COLOR_PRESETS");
 
+  /**
+   * Filters whether text modules use palette-backed color presets.
+   *
+   * @since 2025.12.12
+   *
+   * @param bool $enabled Whether the preset dropdown replaces the legacy color picker.
+   * @return bool Filtered preset dropdown state.
+   */
   return (bool) apply_filters("mx_mod_text_use_color_presets", $enabled);
 }
 
@@ -133,6 +141,14 @@ function mx_mod_text_box_color_presets(): array {
   // Drop presets that have no resolvable color on this project.
   $presets = array_filter($presets, fn($preset) => !empty($preset["color"]));
 
+  /**
+   * Filters palette-backed color presets for text modules.
+   *
+   * @since 2025.12.12
+   *
+   * @param array $presets Text module color presets keyed by preset ID.
+   * @return array Filtered text module color presets.
+   */
   return apply_filters("mx_mod_text_box_color_presets", $presets);
 }
 
@@ -189,7 +205,7 @@ add_action("acf/init", function () {
 
 // Populate the dropdown from the (per-project filterable) presets.
 add_filter("acf/load_field/key=field_mod_text_box_color_preset", function (
-  $field
+  $field,
 ) {
   $choices = [];
   foreach (mx_mod_text_box_color_presets() as $key => $preset) {

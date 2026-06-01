@@ -2,6 +2,16 @@
 
 [Svensk version](CHANGELOG.sv.md)
 
+## 2025.12.12 – 2026-06-01
+
+- **Text module colors** – Added opt-in color presets that resolve against the
+  active Municipio color palette and can be adjusted through project-level
+  filters.
+  [PR #11](https://github.com/municipio-se/wp-plugin-municipio-extended/pull/11).
+- **Iframe accessibility** – Preserved iframe titles when Modularity iframe
+  modules and raw content iframes are rendered through consent-aware WSTG
+  embeds.
+
 ## 2025.12.11 – 2026-05-15
 
 - Fixed offset-less job date parsing so date strings are interpreted in the

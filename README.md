@@ -100,6 +100,12 @@ and `wpackagist-plugin/kirki`.
   sidebars.
 - **Manual input modules** – Support segment output and image aspect ratio
   choices.
+- **Text module color presets** – Disabled by default since `v2025.12.12`. Set
+  `MUNICIPIO_EXTENDED_MOD_TEXT_USE_COLOR_PRESETS` to `true` or return `true`
+  from `mx_mod_text_use_color_presets` to replace the legacy text box color
+  picker with a preset dropdown backed by Municipio palette colors. The filter
+  runs after the constant default, so project code can override it in either
+  direction.
 - **Posts modules** – Support mixed templates, taxonomy filtering, search
   metadata, and archive table fields.
 - **Gallery column CSS** – Respects WordPress gallery column classes since
@@ -147,6 +153,19 @@ Use Nested Pages menu data for children/siblings navigation. since `v2025.12.1`
 
 `apply_filters( 'mx/mod_navigation/hide_if_empty', bool $hide, string $slug, int $id, array $data )`
 Override whether empty navigation modules are hidden.
+
+### Text Modules
+
+`apply_filters( 'mx_mod_text_use_color_presets', bool $enabled )`
+
+Enable the preset dropdown for text module box colors. Defaults to `false`, or
+to the value of `MUNICIPIO_EXTENDED_MOD_TEXT_USE_COLOR_PRESETS` when the
+constant is defined. since `v2025.12.12`
+
+`apply_filters( 'mx_mod_text_box_color_presets', array $presets )`
+
+Change the available text module color presets, including labels and resolved
+color values. since `v2025.12.12`
 
 ### Search
 

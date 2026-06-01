@@ -2,6 +2,16 @@
 
 [English version](CHANGELOG.md)
 
+## 2025.12.12 – 2026-06-01
+
+- **Textmodulfärger** – Lade till valbara färgförinställningar som hämtas från
+  den aktiva Municipio-färgpaletten och kan justeras med projektspecifika
+  filter.
+  [PR #11](https://github.com/municipio-se/wp-plugin-municipio-extended/pull/11).
+- **Iframe-tillgänglighet** – Bevarade iframe-titlar när Modularitys
+  iframe-moduler och råa innehålls-iframes renderas via samtyckesmedvetna
+  WSTG-inbäddningar.
+
 ## 2025.12.11 – 2026-05-15
 
 - Fixade tolkning av jobbdatum utan tidszon så att datumsträngar tolkas i

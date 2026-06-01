@@ -101,6 +101,12 @@ Plugin som krävs är `municipio/wp-plugin-hbg-component-library`,
 - **Modulgrupper** – Kan gruppera moduler per bakgrund och ignorera sidebars som
   inte stödjer bakgrunder.
 - **Manuellt innehåll** – Stödjer segment och val av bildformat.
+- **Färgförinställningar för textmoduler** – Avstängt som standard since
+  `v2025.12.12`. Sätt `MUNICIPIO_EXTENDED_MOD_TEXT_USE_COLOR_PRESETS` till
+  `true` eller returnera `true` från `mx_mod_text_use_color_presets` för att
+  ersätta den äldre färgväljaren för textrutor med en förinställningslista
+  baserad på Municipios palettfärger. Filtret körs efter konstantens
+  standardvärde, så projektkod kan skriva över det i båda riktningar.
 - **Inläggsmoduler** – Stödjer mixed templates, taxonomy-filtrering, sökmetadata
   och arkivtabellfält.
 - **CSS för gallerikolumner** – Respekterar WordPress galleriklasser since
@@ -149,6 +155,19 @@ Använd Nested Pages-data för barn-/syskonnavigation. since `v2025.12.1`
 
 `apply_filters( 'mx/mod_navigation/hide_if_empty', bool $hide, string $slug, int $id, array $data )`
 Styr om tomma navigationsmoduler ska döljas.
+
+### Textmoduler
+
+`apply_filters( 'mx_mod_text_use_color_presets', bool $enabled )`
+
+Aktivera förinställningslistan för textmodulens textrutefärger. Standardvärdet
+är `false`, eller värdet från `MUNICIPIO_EXTENDED_MOD_TEXT_USE_COLOR_PRESETS`
+när konstanten är definierad. since `v2025.12.12`
+
+`apply_filters( 'mx_mod_text_box_color_presets', array $presets )`
+
+Ändra tillgängliga färgförinställningar för textmoduler, inklusive etiketter och
+upplösta färgvärden. since `v2025.12.12`
 
 ### Sök
 
