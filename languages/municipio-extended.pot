@@ -1,15 +1,15 @@
-# Copyright (C) 2025 Whitespace Dev
+# Copyright (C) 2026 Whitespace Dev
 # This file is distributed under the same license as the Municipio Extended plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Municipio Extended 24.125.1\n"
-"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-municipio-extended-2024\n"
+"Project-Id-Version: Municipio Extended 2025.12.11\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-plugin-municipio-extended\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2025-12-17T19:59:58+00:00\n"
+"POT-Creation-Date: 2026-05-27T07:28:23+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: municipio-extended\n"
@@ -265,7 +265,7 @@ msgstr ""
 msgid "Allow Editors access to Redirection"
 msgstr ""
 
-#: autoload/error-page.php:51
+#: autoload/error-page.php:91
 msgid "Error page"
 msgstr ""
 
@@ -429,122 +429,122 @@ msgctxt "Navigation Module Field Group Title"
 msgid "Navigation module"
 msgstr ""
 
-#: autoload/mod-navigation.php:45
+#: autoload/mod-navigation.php:51
 msgctxt "Navigation Module Field Label"
 msgid "Format"
 msgstr ""
 
-#: autoload/mod-navigation.php:57
+#: autoload/mod-navigation.php:63
 msgctxt "Navigation Module Format Choice"
 msgid "List"
 msgstr ""
 
-#: autoload/mod-navigation.php:62
+#: autoload/mod-navigation.php:68
 msgctxt "Navigation Module Format Choice"
 msgid "Grid"
 msgstr ""
 
-#: autoload/mod-navigation.php:67
+#: autoload/mod-navigation.php:73
 msgctxt "Navigation Module Format Choice"
 msgid "Bar"
 msgstr ""
 
-#: autoload/mod-navigation.php:72
+#: autoload/mod-navigation.php:78
 msgctxt "Navigation Module Format Choice"
 msgid "Tree"
 msgstr ""
 
-#: autoload/mod-navigation.php:77
+#: autoload/mod-navigation.php:83
 msgctxt "Navigation Module Format Choice"
 msgid "Cards"
 msgstr ""
 
-#: autoload/mod-navigation.php:82
+#: autoload/mod-navigation.php:88
 msgctxt "Navigation Module Format Choice"
 msgid "Buttons"
 msgstr ""
 
-#: autoload/mod-navigation.php:87
+#: autoload/mod-navigation.php:93
 msgctxt "Navigation Module Format Choice"
 msgid "Inline"
 msgstr ""
 
-#: autoload/mod-navigation.php:96
+#: autoload/mod-navigation.php:102
 msgctxt "Navigation Module Field Label"
 msgid "Source"
 msgstr ""
 
-#: autoload/mod-navigation.php:108
+#: autoload/mod-navigation.php:114
 msgctxt "Navigation Module Source Choice"
 msgid "Child pages"
 msgstr ""
 
-#: autoload/mod-navigation.php:113
+#: autoload/mod-navigation.php:119
 msgctxt "Navigation Module Source Choice"
 msgid "Sibling pages"
 msgstr ""
 
-#: autoload/mod-navigation.php:118
+#: autoload/mod-navigation.php:124
 msgctxt "Navigation Module Source Choice"
 msgid "Menu"
 msgstr ""
 
-#: autoload/mod-navigation.php:123
+#: autoload/mod-navigation.php:129
 msgctxt "Navigation Module Source Choice"
 msgid "Manually selected"
 msgstr ""
 
-#: autoload/mod-navigation.php:132
+#: autoload/mod-navigation.php:138
 msgctxt "Navigation Module Field Label"
 msgid "Menu"
 msgstr ""
 
-#: autoload/mod-navigation.php:156
+#: autoload/mod-navigation.php:162
 msgctxt "Navigation Module Field Label"
 msgid "Items"
 msgstr ""
 
-#: autoload/mod-navigation.php:177
+#: autoload/mod-navigation.php:183
 msgctxt "Navigation Module Field Label"
 msgid "Link"
 msgstr ""
 
-#: autoload/mod-navigation.php:189
+#: autoload/mod-navigation.php:195
 msgctxt "Navigation Module Field Label"
 msgid "Color"
 msgstr ""
 
-#: autoload/mod-navigation.php:209
+#: autoload/mod-navigation.php:215
 msgctxt "Navigation Module Field Label"
 msgid "Variant"
 msgstr ""
 
-#: autoload/mod-navigation.php:217
+#: autoload/mod-navigation.php:223
 msgctxt "Navigation Module Button Variant Choice"
 msgid "Primary"
 msgstr ""
 
-#: autoload/mod-navigation.php:222
+#: autoload/mod-navigation.php:228
 msgctxt "Navigation Module Button Variant Choice"
 msgid "Secondary"
 msgstr ""
 
-#: autoload/mod-navigation.php:227
+#: autoload/mod-navigation.php:233
 msgctxt "Navigation Module Button Variant Choice"
 msgid "Default"
 msgstr ""
 
-#: autoload/mod-navigation.php:247
+#: autoload/mod-navigation.php:253
 msgctxt "Navigation Module Field Label"
 msgid "Icon"
 msgstr ""
 
-#: autoload/mod-navigation.php:272
+#: autoload/mod-navigation.php:278
 msgctxt "Navigation Module Field Label"
 msgid "Display this module even when there are no items"
 msgstr ""
 
-#: autoload/mod-navigation.php:287
+#: autoload/mod-navigation.php:293
 msgctxt "Navigation Module Field Label"
 msgid "Message to display when there are no items"
 msgstr ""
@@ -579,8 +579,66 @@ msgstr ""
 msgid "days"
 msgstr ""
 
-#: autoload/mod-text.php:61
+#: autoload/mod-text.php:106
+msgid "Primary"
+msgstr ""
+
+#: autoload/mod-text.php:107
+msgid "Secondary"
+msgstr ""
+
+#: autoload/mod-text.php:108
+msgid "Complementary"
+msgstr ""
+
+#: autoload/mod-text.php:109
+msgid "Info"
+msgstr ""
+
+#: autoload/mod-text.php:110
+msgid "Success"
+msgstr ""
+
+#: autoload/mod-text.php:111
+msgid "Warning"
+msgstr ""
+
+#: autoload/mod-text.php:112
+msgid "Danger"
+msgstr ""
+
+#: autoload/mod-text.php:113
+#: autoload/modularity.php:104
+msgid "White"
+msgstr ""
+
+#: autoload/mod-text.php:114
+msgid "Neutral"
+msgstr ""
+
+#: autoload/mod-text.php:115
+msgid "Card"
+msgstr ""
+
+#: autoload/mod-text.php:116
+msgid "Background"
+msgstr ""
+
+#: autoload/mod-text.php:143
+#: autoload/mod-text.php:170
 msgid "Text box color"
+msgstr ""
+
+#: autoload/mod-text.php:162
+msgid "None"
+msgstr ""
+
+#: autoload/mod-text.php:204
+msgid "Display style"
+msgstr ""
+
+#: autoload/mod-text.php:205
+msgid "Show the text as an article (without a box)"
 msgstr ""
 
 #: autoload/mod-video.php:4
@@ -591,31 +649,27 @@ msgstr ""
 msgid "Only supports YouTube URLs and MediaFlow embed codes"
 msgstr ""
 
-#: autoload/modularity.php:92
+#: autoload/modularity.php:101
 msgid "No background"
 msgstr ""
 
-#: autoload/modularity.php:93
+#: autoload/modularity.php:102
 msgid "Complementary color"
 msgstr ""
 
-#: autoload/modularity.php:94
+#: autoload/modularity.php:103
 msgid "Secondary color"
 msgstr ""
 
-#: autoload/modularity.php:95
-msgid "White"
-msgstr ""
-
-#: autoload/modularity.php:96
+#: autoload/modularity.php:105
 msgid "Neutral color"
 msgstr ""
 
-#: autoload/modularity.php:97
+#: autoload/modularity.php:106
 msgid "Card color"
 msgstr ""
 
-#: autoload/modularity.php:98
+#: autoload/modularity.php:107
 msgid "Background color"
 msgstr ""
 
@@ -882,103 +936,103 @@ msgstr ""
 msgid "Show print button"
 msgstr ""
 
-#: autoload/search.php:572
+#: autoload/search.php:657
 msgid "Search"
 msgstr ""
 
-#: autoload/search.php:576
+#: autoload/search.php:661
 msgid "Keywords"
 msgstr ""
 
-#: autoload/search.php:579
+#: autoload/search.php:664
 msgid "Seperate keywords with commas or new lines."
 msgstr ""
 
-#: autoload/search.php:713
+#: autoload/search.php:798
 msgid "Search settings"
 msgstr ""
 
-#: autoload/search.php:717
+#: autoload/search.php:802
 msgid "Enable “external pages” content type"
 msgstr ""
 
-#: autoload/search.php:725
+#: autoload/search.php:810
 msgid "Check this box to enable the “external pages” content type which you can use to add external pages to the site search."
 msgstr ""
 
-#: autoload/search.php:732
+#: autoload/search.php:817
 msgid "Post type settings"
 msgstr ""
 
-#: autoload/search.php:746
+#: autoload/search.php:831
 msgid "Exclude from search"
 msgstr ""
 
-#: autoload/search.php:757
+#: autoload/search.php:842
 msgid "Boost"
 msgstr ""
 
-#: autoload/search.php:761
+#: autoload/search.php:846
 msgid "The boost factor for this post type."
 msgstr ""
 
-#: autoload/search.php:777
+#: autoload/search.php:862
 msgid "Decay"
 msgstr ""
 
-#: autoload/search.php:781
+#: autoload/search.php:866
 msgid "Whether older posts should have lower scores."
 msgstr ""
 
-#: autoload/search.php:797
+#: autoload/search.php:882
 msgid "Visible fields"
 msgstr ""
 
-#: autoload/search.php:801
+#: autoload/search.php:886
 msgctxt "Search Settings Visible Fields Choice"
 msgid "Date"
 msgstr ""
 
-#: autoload/search.php:806
+#: autoload/search.php:891
 msgctxt "Search Settings Visible Fields Choice"
 msgid "Type"
 msgstr ""
 
-#: autoload/search.php:812
+#: autoload/search.php:897
 msgid "Which fields to show or hide in the search results."
 msgstr ""
 
-#: autoload/search.php:850
-#: autoload/search.php:852
+#: autoload/search.php:935
+#: autoload/search.php:937
 msgid "External pages"
 msgstr ""
 
-#: autoload/search.php:853
+#: autoload/search.php:938
 msgid "External page"
 msgstr ""
 
-#: autoload/search.php:866
-#: autoload/search.php:869
+#: autoload/search.php:951
+#: autoload/search.php:954
 msgid "Content type"
 msgstr ""
 
-#: autoload/search.php:868
+#: autoload/search.php:953
 msgid "Content types"
 msgstr ""
 
-#: autoload/search.php:888
+#: autoload/search.php:973
 msgid "External page attributes"
 msgstr ""
 
-#: autoload/search.php:892
+#: autoload/search.php:977
 msgid "URL"
 msgstr ""
 
-#: autoload/search.php:895
+#: autoload/search.php:980
 msgid "The URL to the external page."
 msgstr ""
 
-#: autoload/search.php:971
+#: autoload/search.php:1056
 msgctxt "Attachment Search Result Type Label"
 msgid "Document"
 msgstr ""
