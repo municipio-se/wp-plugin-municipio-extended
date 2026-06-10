@@ -61,6 +61,13 @@ add_action("acf/init", function () {
           "value" => "index",
         ],
       ],
+      1 => [
+        0 => [
+          "field" => "field_571dfd4c0d9d9",
+          "operator" => "==",
+          "value" => "mixed",
+        ],
+      ],
     ],
     "wrapper" => [
       "width" => "",
