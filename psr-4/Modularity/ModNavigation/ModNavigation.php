@@ -121,18 +121,6 @@ class ModNavigation extends MxModule {
     return get_field($field, $this->ID, ...$args);
   }
 
-  /**
-   * Current page id: the constructor `post_id` arg (set in headless REST
-   * context), falling back to the global `$post`.
-   */
-  protected function getCurrentPostId() {
-    if (!empty($this->args["post_id"])) {
-      return (int) $this->args["post_id"];
-    }
-    $post = get_post();
-    return $post ? (int) $post->ID : 0;
-  }
-
   protected function getItems() {
     $depth =
       $this->getField("mod_navigation_depth") ?:
@@ -157,7 +145,7 @@ class ModNavigation extends MxModule {
     if ($depth <= 0) {
       return null;
     }
-    $post = get_post($post_id ?? $this->getCurrentPostId());
+    $post = get_post($post_id ?? $this->getCurrentPost());
     if (!$post) {
       return [];
     }
@@ -240,7 +228,7 @@ class ModNavigation extends MxModule {
   }
 
   protected function getSiblings() {
-    $post = get_post($this->getCurrentPostId());
+    $post = $this->getCurrentPost();
     if (!$post) {
       return [];
     }

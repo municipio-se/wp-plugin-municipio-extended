@@ -60,6 +60,23 @@ class MxModule extends \Modularity\Module {
   }
 
   /**
+   * The post this module is rendered in the context of.
+   * @return \WP_Post|null
+   */
+  protected function getCurrentPost() {
+    /**
+     * Filters the post a module is rendered in the context of.
+     *
+     * Defaults to the global `$post`, which is empty outside the loop
+     * (e.g. REST requests) — hook in to supply the page being rendered.
+     *
+     * @param \WP_Post|null $post   Context post.
+     * @param MxModule      $module Module instance.
+     */
+    return apply_filters("mx/module/current_post", get_post(), $this);
+  }
+
+  /**
    * Data array
    * @return array $data
    */
