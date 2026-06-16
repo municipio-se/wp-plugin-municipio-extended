@@ -2,6 +2,17 @@
 
 [Svensk version](CHANGELOG.sv.md)
 
+## 2025.12.13 – 2026-06-16
+
+- **Mixed posts taxonomies** – Made the existing taxonomy display toggle
+  available for posts modules using the mixed display mode, allowing selected
+  taxonomy terms to be added to mixed post data.
+  [PR #12](https://github.com/municipio-se/wp-plugin-municipio-extended/pull/12).
+- **Navigation context** – Added the `mx/module/current_post` filter and used it
+  when resolving children and sibling navigation, allowing renderers outside the
+  loop to supply the current page when the global `$post` is unavailable.
+  [PR #13](https://github.com/municipio-se/wp-plugin-municipio-extended/pull/13).
+
 ## 2025.12.12 – 2026-06-01
 
 - **Text module colors** – Added opt-in color presets that resolve against the
