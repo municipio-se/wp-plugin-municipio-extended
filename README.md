@@ -124,6 +124,10 @@ Override the resolved model class.
 `apply_filters( 'mx/module_wrapper_attrs', array $attrs, array $args, string $postType, int $postId )`
 Add attributes to Modularity module wrappers.
 
+`apply_filters( 'mx/module/current_post', WP_Post|null $post, MxModule $module )`
+Override the post a module is rendered in the context of. Defaults to the
+global `$post`, which is empty outside the loop (e.g. REST requests).
+
 `apply_filters( 'mxui/debug_enabled', bool $enabled )` Enable MXUI debug output.
 
 ### Component Modifiers

@@ -145,7 +145,7 @@ class ModNavigation extends MxModule {
     if ($depth <= 0) {
       return null;
     }
-    $post = get_post($post_id);
+    $post = get_post($post_id ?? $this->getCurrentPost());
     if (!$post) {
       return [];
     }
@@ -228,7 +228,7 @@ class ModNavigation extends MxModule {
   }
 
   protected function getSiblings() {
-    $post = get_post();
+    $post = $this->getCurrentPost();
     if (!$post) {
       return [];
     }

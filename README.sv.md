@@ -125,6 +125,10 @@ Ersätt den lösta modellklassen.
 `apply_filters( 'mx/module_wrapper_attrs', array $attrs, array $args, string $postType, int $postId )`
 Lägg till attribut på Modularity-modulwrappers.
 
+`apply_filters( 'mx/module/current_post', WP_Post|null $post, MxModule $module )`
+Ändra vilken post en modul renderas för. Standardvärdet är globala `$post`,
+som saknas utanför loopen (t.ex. vid REST-anrop).
+
 `apply_filters( 'mxui/debug_enabled', bool $enabled )` Aktivera
 MXUI-debugutskrift.
 
