@@ -91,29 +91,6 @@ class ModNavigation extends MxModule {
           ),
         ],
       ],
-      [
-        "type" => "select",
-        "settings" => "mod_navigation_grid_style",
-        "label" => _x(
-          "Style for format “grid”",
-          "Navigation Module Customization Field Label",
-          "municipio-extended",
-        ),
-        "default" => "default",
-        "priority" => 10,
-        "choices" => [
-          "default" => _x(
-            "Standard",
-            "Navigation Module Grid Style Choice",
-            "municipio-extended",
-          ),
-          "blocks" => _x(
-            "Blocks",
-            "Navigation Module Grid Style Choice",
-            "municipio-extended",
-          ),
-        ],
-      ],
     ];
   }
 
@@ -134,8 +111,6 @@ class ModNavigation extends MxModule {
         return $this->getSiblings();
       case "manual":
         return $this->getManualItems();
-      case "menu":
-        return $this->getMenuItems($depth);
       default:
         return $this->getManualItems();
     }
@@ -341,19 +316,6 @@ class ModNavigation extends MxModule {
         ),
       ];
     }, $menu_items);
-  }
-
-  protected function getMenuItems($depth = 1, $post_parent = 0) {
-    if ($depth <= 0) {
-      return null;
-    }
-
-    $menu_slug = $this->getField("mod_navigation_menu");
-    if (empty($menu_slug)) {
-      return [];
-    }
-
-    return self::getMenuItemsByMenu($menu_slug, $depth, $post_parent);
   }
 
   protected function getManualItems() {

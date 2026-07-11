@@ -90,12 +90,12 @@ and `wpackagist-plugin/kirki`.
 
 ## Modularity and Theme Behavior
 
-- **Navigation modules** – Support children, siblings, manual items, menu
-  source, icons, colors, descriptions, and hide-if-empty logic.
+- **Navigation modules** – Support children, siblings, manual items, icons,
+  descriptions, and hide-if-empty logic. Grid navigation backed directly by a
+  WordPress menu has moved to the standalone Modularity Navigation plugin on the
+  `decommission` branch.
 - **Nested Pages** – Can back child/sibling navigation with
   `mx_mod_navigation_use_nested_pages` since `v2025.12.1`.
-- **Navigation fixes** – Related menu selection was fixed since `v2025.12.2`;
-  menu-source argument order was fixed since `v2025.12.3`.
 - **Module groups** – Can group modules by background and ignore unsupported
   sidebars.
 - **Manual input modules** – Support segment output and image aspect ratio
@@ -125,8 +125,8 @@ Override the resolved model class.
 Add attributes to Modularity module wrappers.
 
 `apply_filters( 'mx/module/current_post', WP_Post|null $post, MxModule $module )`
-Override the post a module is rendered in the context of. Defaults to the
-global `$post`, which is empty outside the loop (e.g. REST requests).
+Override the post a module is rendered in the context of. Defaults to the global
+`$post`, which is empty outside the loop (e.g. REST requests).
 
 `apply_filters( 'mxui/debug_enabled', bool $enabled )` Enable MXUI debug output.
 

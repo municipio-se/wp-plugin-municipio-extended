@@ -19,17 +19,6 @@ add_action("plugins_loaded", function ($array) {
   }
 });
 
-function get_all_menus() {
-  $menus = wp_get_nav_menus();
-  $choices = [];
-
-  foreach ($menus as $menu) {
-    $choices[$menu->slug] = $menu->name;
-  }
-
-  return $choices;
-}
-
 add_action("acf/init", function () {
   acf_add_local_field_group([
     "key" => "group_mod_navigation",
@@ -62,11 +51,6 @@ add_action("acf/init", function () {
           "choices" => [
             "list" => _x(
               "List",
-              "Navigation Module Format Choice",
-              "municipio-extended",
-            ),
-            "grid" => _x(
-              "Grid",
               "Navigation Module Format Choice",
               "municipio-extended",
             ),
@@ -121,40 +105,11 @@ add_action("acf/init", function () {
               "Navigation Module Source Choice",
               "municipio-extended",
             ),
-            "menu" => _x(
-              "Menu",
-              "Navigation Module Source Choice",
-              "municipio-extended",
-            ),
             "manual" => _x(
               "Manually selected",
               "Navigation Module Source Choice",
               "municipio-extended",
             ),
-          ],
-        ],
-        "mod_navigation_menu" => [
-          "key" => "field_mod_navigation_menu",
-          "label" => _x(
-            "Menu",
-            "Navigation Module Field Label",
-            "municipio-extended",
-          ),
-          "name" => "mod_navigation_menu",
-          "graphql_field_name" => "menu",
-          "show_in_graphql" => 1,
-          "type" => "select",
-          "return_format" => "value",
-          "choices" => get_all_menus(),
-          "allow_null" => 1,
-          "conditional_logic" => [
-            [
-              [
-                "field" => "field_mod_navigation_source",
-                "operator" => "==",
-                "value" => "menu",
-              ],
-            ],
           ],
         ],
         "mod_navigation_items" => [
@@ -189,26 +144,6 @@ add_action("acf/init", function () {
               "type" => "link",
               "required" => 1,
               "wrapper" => ["width" => "75%"],
-            ],
-            [
-              "key" => "field_mod_navigation_color",
-              "label" => _x(
-                "Color",
-                "Navigation Module Field Label",
-                "municipio-extended",
-              ),
-              "name" => "color",
-              "type" => "color_picker",
-              "wrapper" => ["width" => "25%"],
-              "conditional_logic" => [
-                [
-                  [
-                    "field" => "field_mod_navigation_format",
-                    "operator" => "==",
-                    "value" => "grid",
-                  ],
-                ],
-              ],
             ],
             [
               "key" => "field_mod_navigation_button_variant",

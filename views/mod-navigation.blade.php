@@ -16,10 +16,6 @@
       @include('mxui.navigation.list')
     @break
 
-    @case ('grid')
-      @include('mxui.navigation.grid')
-    @break
-
     @case ('bar')
       @include('mxui.navigation.bar')
     @break
