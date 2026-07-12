@@ -107,8 +107,9 @@ Plugin som krävs är `municipio/wp-plugin-hbg-component-library`,
   ersätta den äldre färgväljaren för textrutor med en förinställningslista
   baserad på Municipios palettfärger. Filtret körs efter konstantens
   standardvärde, så projektkod kan skriva över det i båda riktningar.
-- **Inläggsmoduler** – Stödjer mixed templates, taxonomy-filtrering, sökmetadata
-  och arkivtabellfält.
+- **Inläggsmoduler** – Stödjer taxonomy-filtrering, sökmetadata och
+  arkivtabellfält. På `decommission`-branchen ägs mixed-templaten i stället av
+  det fristående pluginet Modularity Posts.
 - **CSS för gallerikolumner** – Respekterar WordPress galleriklasser since
   `v2025.12.5`.
 
@@ -126,8 +127,8 @@ Ersätt den lösta modellklassen.
 Lägg till attribut på Modularity-modulwrappers.
 
 `apply_filters( 'mx/module/current_post', WP_Post|null $post, MxModule $module )`
-Ändra vilken post en modul renderas för. Standardvärdet är globala `$post`,
-som saknas utanför loopen (t.ex. vid REST-anrop).
+Ändra vilken post en modul renderas för. Standardvärdet är globala `$post`, som
+saknas utanför loopen (t.ex. vid REST-anrop).
 
 `apply_filters( 'mxui/debug_enabled', bool $enabled )` Aktivera
 MXUI-debugutskrift.

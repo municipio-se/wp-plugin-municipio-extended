@@ -106,8 +106,9 @@ and `wpackagist-plugin/kirki`.
   picker with a preset dropdown backed by Municipio palette colors. The filter
   runs after the constant default, so project code can override it in either
   direction.
-- **Posts modules** – Support mixed templates, taxonomy filtering, search
-  metadata, and archive table fields.
+- **Posts modules** – Support taxonomy filtering, search metadata, and archive
+  table fields. On the `decommission` branch, the mixed template is instead
+  owned by the standalone Modularity Posts plugin.
 - **Gallery column CSS** – Respects WordPress gallery column classes since
   `v2025.12.5`.
 
