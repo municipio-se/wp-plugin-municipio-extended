@@ -91,9 +91,9 @@ and `wpackagist-plugin/kirki`.
 ## Modularity and Theme Behavior
 
 - **Navigation modules** – Support children, siblings, manual items, icons,
-  descriptions, and hide-if-empty logic. Grid navigation backed directly by a
-  WordPress menu has moved to the standalone Modularity Navigation plugin on the
-  `decommission` branch.
+  descriptions, and hide-if-empty logic for the remaining formats. Grid and
+  button navigation backed by WordPress menus or manual items have moved to the
+  standalone Modularity Navigation plugin on the `decommission` branch.
 - **Nested Pages** – Can back child/sibling navigation with
   `mx_mod_navigation_use_nested_pages` since `v2025.12.1`.
 - **Module groups** – Can group modules by background and ignore unsupported

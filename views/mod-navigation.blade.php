@@ -28,10 +28,6 @@
       @include('mxui.navigation.cards')
     @break
 
-    @case ('buttons')
-      @include('mxui.navigation.buttons')
-    @break
-
     @case ('inline')
       @include('mxui.navigation.inline')
     @break
