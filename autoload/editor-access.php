@@ -98,6 +98,13 @@ add_filter("admin_init", function () {
     $allowedCapabilities = [
       "moderate_comments",
       "manage_categories",
+      "edit_categories",
+      "delete_categories",
+      "assign_categories",
+      "manage_post_tags",
+      "edit_post_tags",
+      "delete_post_tags",
+      "assign_post_tags",
       "manage_links",
       "upload_files",
       "unfiltered_html",
