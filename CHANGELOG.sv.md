@@ -2,6 +2,13 @@
 
 [English version](CHANGELOG.md)
 
+## 2025.12.14 – 2026-08-20
+
+- **Taxonomibehörigheter för redaktörer** – Bevarade redaktörsrollens
+  behörigheter att hantera, redigera, ta bort och tilldela kategorier och
+  inläggstaggar när pluginet återställer rollens tillåtna behörigheter.
+  [PR #14](https://github.com/municipio-se/wp-plugin-municipio-extended/pull/14).
+
 ## 2025.12.13 – 2026-06-16
 
 - **Taxonomier för mixed posts** – Gjorde den befintliga växeln för

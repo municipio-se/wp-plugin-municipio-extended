@@ -2,6 +2,13 @@
 
 [Svensk version](CHANGELOG.sv.md)
 
+## 2025.12.14 – 2026-08-20
+
+- **Editor taxonomy permissions** – Preserved the editor role's capabilities to
+  manage, edit, delete, and assign categories and post tags when the plugin
+  resets the role's allowed capabilities.
+  [PR #14](https://github.com/municipio-se/wp-plugin-municipio-extended/pull/14).
+
 ## 2025.12.13 – 2026-06-16
 
 - **Mixed posts taxonomies** – Made the existing taxonomy display toggle
