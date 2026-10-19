@@ -2,6 +2,12 @@
 
 [Svensk version](CHANGELOG.sv.md)
 
+## 2025.12.16 – 2026-10-19
+
+- Convert the configured base font size from pixels to rem after the theme
+  calculates other typography values, so text follows the visitor’s preferred
+  browser size. Preserve relative values and stored settings.
+
 ## 2025.12.15 – 2026-10-19
 
 - Contact links now expose their phone number or email address to assistive

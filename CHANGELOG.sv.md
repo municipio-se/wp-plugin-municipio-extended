@@ -2,6 +2,12 @@
 
 [English version](CHANGELOG.md)
 
+## 2025.12.16 – 2026-10-19
+
+- Räkna om den konfigurerade bastextstorleken från pixlar till rem efter temats
+  beräkning av övrig typografi, så att texten följer besökarens textinställning
+  i webbläsaren. Relativa värden och sparade inställningar bevaras.
+
 ## 2025.12.15 – 2026-10-19
 
 - Kontaktlänkar förmedlar nu telefonnumret eller e-postadressen till hjälpmedel,
