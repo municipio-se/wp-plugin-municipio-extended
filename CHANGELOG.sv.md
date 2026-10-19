@@ -2,6 +2,13 @@
 
 [English version](CHANGELOG.md)
 
+## 2025.12.15 – 2026-10-19
+
+- Kontaktlänkar förmedlar nu telefonnumret eller e-postadressen till hjälpmedel,
+  med dekorativa ikoner dolda.
+- Kontaktkort utelämnar tomma listor, enskilda tomma kontaktrader och tomma
+  öppettidsrubriker. Adress och övrigt innehåll visas fortsatt.
+
 ## 2025.12.14 – 2026-08-20
 
 - **Taxonomibehörigheter för redaktörer** – Bevarade redaktörsrollens

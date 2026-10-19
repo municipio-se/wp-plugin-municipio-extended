@@ -1,53 +1,64 @@
 @php
   $headingLevel ??= 3;
+  $workTitle = trim($contact['work_title'] ?? '');
+  $department = trim($contact['administration_unit'] ?? '');
+  $email = trim($contact['email'] ?? '');
+  $phones = array_filter(
+      ($contact['phone'] ?? []) ?: [],
+      fn($phone) => trim($phone['number'] ?? '') !== '',
+  );
+  $openingHours = array_filter(
+      array_map('trim', explode("\n", $contact['opening_hours'] ?? '')),
+      fn($hours) => $hours !== '',
+  );
 @endphp
 
 <div {{ mx_attrs([
     'class' => ['bg-[--color-background-card]'],
 ]) }} itemscope itemtype="https://schema.org/Person">
-  <ul class="text-lg mb-4">
-    @if (
-        (isset($contact['work_title']) && !empty($contact['work_title'])) ||
-            (isset($contact['administration_unit']) && !empty($contact['administration_unit'])))
-      {{-- Work title --}}
-      <li
-        {{ mx_attrs([
-            'class' => [
-                'mb-4' => empty($contact['administration_unit']),
-            ],
-        ]) }}>
-        {{ isset($contact['work_title']) && !empty($contact['work_title']) ? $contact['work_title'] : '' }}
-      </li>
+  @if ($workTitle !== '' || $department !== '' || $phones || $email !== '')
+    <ul class="text-lg mb-4">
+      @if ($workTitle !== '')
+        {{-- Work title --}}
+        <li
+          {{ mx_attrs([
+              'class' => [
+                  'mb-4' => $department === '',
+              ],
+          ]) }}>
+          {{ $workTitle }}
+        </li>
+      @endif
 
-      {{-- Department --}}
-      <li class="mb-4" itemprop="department">
-        {{ isset($contact['administration_unit']) && !empty($contact['administration_unit']) ? $contact['administration_unit'] : '' }}
-      </li>
-    @endif
+      @if ($department !== '')
+        {{-- Department --}}
+        <li class="mb-4" itemprop="department">
+          {{ $department }}
+        </li>
+      @endif
 
-    {{-- Phone number --}}
-    @if (isset($contact['phone']) && !empty($contact['phone']))
-      @foreach ($contact['phone'] as $phone)
+      {{-- Phone number --}}
+      @foreach ($phones as $phone)
         <li class="text-primary">
-          <a itemprop="telephone" href="tel:{{ $phone['number'] }}" aria-label="telefon">
-            <span>{{ mx_get_icon('call') }}</span>
+          <a itemprop="telephone" href="tel:{{ $phone['number'] }}">
+            <span aria-hidden="true">{{ mx_get_icon('call') }}</span>
             <span class="underline">{{ $phone['number'] }}</span>
           </a>
         </li>
       @endforeach
-    @endif
 
-    {{-- Email --}}
-    @if (!empty($contact['email']))
-      <li class="text-primary">
-        <a itemprop="email" translate="no" class="hover:bg-white flex  break-all gap-1"
-          href="mailto:{{ $contact['email'] }}" aria-label="e-post">
-          <span>{{ mx_get_icon('mail') }}</span>
-          <span class="underline">{{ $contact['email'] }}</span>
-        </a>
-      </li>
-    @endif
-  </ul>
+      {{-- Email --}}
+      @if ($email !== '')
+        <li class="text-primary">
+          <a itemprop="email" translate="no" class="hover:bg-white flex  break-all gap-1"
+            href="mailto:{{ $contact['email'] }}">
+            <span aria-hidden="true">{{ mx_get_icon('mail') }}</span>
+            <span class="underline">{{ $contact['email'] }}</span>
+          </a>
+        </li>
+      @endif
+    </ul>
+  @endif
 
   {{-- Social Media --}}
   @if (!empty($contact['social_media']))
@@ -112,21 +123,15 @@
   @endif
 
   {{-- Opening Hours --}}
-  @if (!empty($contact['opening_hours']))
-    @php
-      // Convert string to array by splitting on newlines
-      $hours_array = explode("\n", $contact['opening_hours']);
-    @endphp
+  @if ($openingHours)
     <h{!! $headingLevel !!} class="font-semibold mt-2"><?php _e(
       "Opening hours",
       "modularity",
     ); ?>
       </h{!! $headingLevel !!}>
       <ul class="mb-4">
-        @foreach ($hours_array as $hours)
-          @if (!empty(trim($hours)))
-            <li>{!! trim($hours) !!}</li>
-          @endif
+        @foreach ($openingHours as $hours)
+          <li>{!! $hours !!}</li>
         @endforeach
       </ul>
   @endif

@@ -2,6 +2,13 @@
 
 [Svensk version](CHANGELOG.sv.md)
 
+## 2025.12.15 – 2026-10-19
+
+- Contact links now expose their phone number or email address to assistive
+  technology, with decorative icons hidden.
+- Contact cards omit empty lists, individual blank contact rows and empty
+  opening-hours headings. Address and other content remain visible.
+
 ## 2025.12.14 – 2026-08-20
 
 - **Editor taxonomy permissions** – Preserved the editor role's capabilities to
