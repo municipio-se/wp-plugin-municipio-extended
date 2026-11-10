@@ -2,6 +2,12 @@
 
 [English version](CHANGELOG.md)
 
+## 2025.12.17 – 2026-11-10
+
+- Utöka administratörernas tvåfaktorskrav till nätverkets superadministratörer,
+  även konton utan lokal roll. Använd mejl när ingen metod är aktiverad och
+  behåll befintliga val för TOTP och mejl.
+
 ## 2025.12.16 – 2026-10-19
 
 - Räkna om den konfigurerade bastextstorleken från pixlar till rem efter temats

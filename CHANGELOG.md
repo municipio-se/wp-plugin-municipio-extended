@@ -2,6 +2,12 @@
 
 [Svensk version](CHANGELOG.sv.md)
 
+## 2025.12.17 – 2026-11-10
+
+- Extend the administrator two-factor requirement to network super
+  administrators, including accounts without a local site role. Use email when
+  no provider is enabled and preserve existing TOTP and email choices.
+
 ## 2025.12.16 – 2026-10-19
 
 - Convert the configured base font size from pixels to rem after the theme

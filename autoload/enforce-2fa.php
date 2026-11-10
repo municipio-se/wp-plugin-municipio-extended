@@ -1,8 +1,6 @@
 <?php
 
-// For some reasen the config variables didn't load properly. I fixed it by wrapping the
-// code in an init action for now. TODO: Investigate why the config variables didn't load
-// properly and fix the issue.
+// Register after configuration constants have been loaded.
 add_action("init", function () {
   add_filter(
     "two_factor_enabled_providers_for_user",
@@ -19,7 +17,18 @@ add_action("init", function () {
 
       $user = get_user_by("id", $user_id);
 
-      if (empty(array_intersect($force_roles, $user->roles))) {
+      // Network administrators may have no local administrator role.
+      $force_super_admin =
+        defined("TWO_FACTOR_ENFORCE_ADMIN") &&
+        TWO_FACTOR_ENFORCE_ADMIN &&
+        is_multisite() &&
+        is_super_admin($user_id);
+
+      if (
+        !$user ||
+        (!$force_super_admin &&
+          empty(array_intersect($force_roles, $user->roles)))
+      ) {
         return $providers;
       }
 
