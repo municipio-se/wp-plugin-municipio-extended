@@ -4,6 +4,7 @@
       <li class="">
         @component('mxui.button', [
             'href' => $item['href'],
+            'target' => $item['target'] ?? '_self',
             'variant' => $item['buttonVariant'] ?? 'default',
             'classList' => ['font-normal px-4'],
         ])

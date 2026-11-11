@@ -2,7 +2,7 @@
   <ul class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,18rem),1fr))] gap-2 sm:gap-6 peer">
     @foreach ($items as $item)
       <li>
-        <a href="{{ $item['href'] }}"
+        <a href="{{ $item['href'] }}" target="{{ $item['target'] ?? '_self' }}"
           class="block w-full h-full p-4 bg-complementary-light hover:bg-primary hover:text-primary-contrasting transition-none"
           style="border-radius: var(--radius-lg);">
           <div class="space-y-2">

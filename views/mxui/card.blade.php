@@ -11,6 +11,9 @@ Left to handle:
 --}}
 
 @php
+  // Navigation attributes belong on the heading link, not the card's div wrapper.
+  $linkAttributes = array_intersect_key($attributeList ?? [], array_flip(['target', 'rel', 'download', 'hreflang', 'referrerpolicy']));
+  $attributeList = array_diff_key($attributeList ?? [], $linkAttributes);
   $asSubgrid ??= false;
   $classList ??= null;
   $content ??= $slot ?? null;
@@ -90,6 +93,7 @@ Left to handle:
               'classList' =>
                   'no-prose no-underline interactive:underline after:absolute after:inset-0 after:z-[1] after:inert:hidden hover:visited:text-inherit transition-none break-words hyphens-auto',
               'attributes' => [
+                  ...$linkAttributes,
                   'data-mxui-card-link' => '',
                   'slot' => $asTemplate ? 'link title' : null,
               ],
@@ -180,6 +184,8 @@ Left to handle:
         <li class="">
           @component('mxui.button', [
               'href' => $button['href'],
+              'target' => $button['target'] ?? $button['attributeList']['target'] ?? '_self',
+              'attributes' => $button['attributeList'] ?? [],
               'variant' => $button['color'] ?? ($button['buttonVariant'] ?? 'default'),
               'classList' => 'h-auto',
           ])

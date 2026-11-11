@@ -329,6 +329,7 @@ class ModNavigation extends MxModule {
       return [
         "id" => $item->id,
         "href" => $item->url,
+        "target" => $item->target ?? "",
         "title" => $item->title,
         "image" => $item->image,
         "icon" => $item->icon,
@@ -371,6 +372,7 @@ class ModNavigation extends MxModule {
           get_field("custom_menu_title", $post->ID) ?:
           $post->post_title,
         "href" => $item["link"]["url"],
+        "target" => $item["link"]["target"] ?? "",
         "image" => $post ? mx_get_image(get_post_thumbnail_id($post)) : null,
         "icon" =>
           $item["icon"] ?:

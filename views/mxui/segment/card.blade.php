@@ -43,6 +43,7 @@ sub_title
             'meta' => $meta,
             'tags' => $tags,
             'link' => $link,
+            'attributeList' => ['target' => $linkTarget ?? '_self'],
             'wrapContent' => true,
             'classList' => ['[--card-px:2.5rem] [--card-py:1.5rem] isolate'],
             'expandLinkCover' => true,

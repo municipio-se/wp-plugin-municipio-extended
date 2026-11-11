@@ -10,6 +10,8 @@
     {{ mx_attrs(
         [
             'href' => $href,
+            'target' => $target ?? $link['target'] ?? null,
+            'rel' => $rel ?? $link['rel'] ?? null,
             'class' => [$classList ?? null],
             'data-mxui-clickable' => '',
             'data-mxui-interactive' => true,

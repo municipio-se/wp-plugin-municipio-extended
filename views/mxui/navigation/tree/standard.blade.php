@@ -17,7 +17,7 @@
         </div>
         <div class="space-y-4">
           <div class="">
-            <a href="{{ $item['href'] }}"
+            <a href="{{ $item['href'] }}" target="{{ $item['target'] ?? '_self' }}"
               class="text-h2 leading-none font-medium underline text-link hover:text-link-hover">
               {{ $item['title'] }}
             </a>
@@ -31,7 +31,7 @@
             <ul class="flex flex-wrap gap-2 space-y-0">
               @foreach ($item['children'] as $child)
                 <li class="p-0">
-                  <a href="{{ $child['href'] }}"
+                  <a href="{{ $child['href'] }}" target="{{ $child['target'] ?? '_self' }}"
                     class="text-h3 block p-3 leading-none rounded bg-secondary text-secondary-contrasting hover:bg-secondary-dark visited:hover:text-white transition-colors">
                     {{ $child['title'] }}
                   </a>

@@ -20,7 +20,7 @@
 
           <!-- Text Section (Coloured Section) -->
           <div class="self-center">
-            <a href="{{ $item['href'] }}"
+            <a href="{{ $item['href'] }}" target="{{ $item['target'] ?? '_self' }}"
               class="text-base inline-flex items-center after:absolute after:inset-0 after:z-[1] after:inert:hidden">
               <span class="typography-h3 underline group-hover:text-primary-contrasting">{{ $item['title'] }}</span>
             </a>
@@ -37,7 +37,7 @@
           <ul class="flex flex-wrap gap-7 space-y-0 col-span-2 @[40rem]:col-start-2 @[40rem]:col-span-1">
             @foreach ($item['children'] as $child)
               <li class="p-0">
-                <a href="{{ $child['href'] }}"
+                <a href="{{ $child['href'] }}" target="{{ $child['target'] ?? '_self' }}"
                   class="block leading-none text-link visited:text-link underline transition-colors hover:text-link-hover hover:visited:text-link-hover">
                   {{ $child['title'] }}
                 </a>

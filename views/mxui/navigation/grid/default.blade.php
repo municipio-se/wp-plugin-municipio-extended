@@ -2,7 +2,7 @@
   <ul class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,18rem),1fr))] gap-[--grid-gap] space-y-0 peer">
     @foreach ($items as $item)
       <li class="p-0" style="--color-custom: {!! $item['color'] ?: 'var(--color-primary)' !!}">
-        <a href="{{ $item['href'] }}"
+        <a href="{{ $item['href'] }}" target="{{ $item['target'] ?? '_self' }}"
           class="grid group grid-cols-[max-content_1fr] gap-4 items-center hover:text-inherit visited:hover:text-inherit">
           <div class="self-start">
             <span

@@ -50,6 +50,9 @@ class Segment extends MxBaseController {
     // If no link and exactly one button, use that button as link
     if (!$this->data["link"] && ($buttons && count($buttons) === 1)) {
       $this->data["link"] = $buttons[0]["href"];
+      $this->data["linkTarget"] =
+        $buttons[0]["target"] ??
+        ($buttons[0]["attributeList"]["target"] ?? "_self");
     }
 
     if (!empty($hasPlaceholder)) {
@@ -210,6 +213,9 @@ class Segment extends MxBaseController {
       empty($this->data["buttons"][0]["text"])
     ) {
       $this->data["link"] = $this->data["buttons"][0]["href"] ?? null;
+      $this->data["linkTarget"] =
+        $this->data["buttons"][0]["target"] ??
+        ($this->data["buttons"][0]["attributeList"]["target"] ?? "_self");
       $this->data["buttons"] = [];
     }
   }

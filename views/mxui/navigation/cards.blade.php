@@ -22,7 +22,7 @@
             'image' => $item['image'] ?? '',
             'postId' => $item['id'] ?? '',
             'postType' => $item['postType'] ?? '',
-            'attributeList' => $item['attributeList'] ?? [],
+            'attributeList' => [...($item['attributeList'] ?? []), 'target' => $item['target'] ?? '_self'],
             'useHbg' => false
         ])
           @includeWhen(!empty($post->callToActionItems['floating']), 'partials.floating')
